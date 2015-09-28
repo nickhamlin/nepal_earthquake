@@ -1,0 +1,249 @@
+<!--  W209 Assignment 3 - Static D3 Viz  -->
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style> /* set the CSS */
+
+body { font: 12px "Helvetica";}
+
+h1 {
+    color: steelblue;
+    font: "Helvetica";
+    font-size: 1.75em; 
+    text-align: left;
+}
+
+h2 {
+    color: steelblue;
+    font: "Helvetica";
+    font-size: 1.3em;    
+    font-style: italic;
+    text-align: left;
+}
+
+h3 {
+    color: #404040;
+    font: "Helvetica";
+    font-size: 0.9 em;    
+    font-style: normal; 
+    text-align: left;
+}
+
+path { 
+    stroke: #404040;
+    stroke-width: 2;
+    fill: none;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
+div.tooltip {   
+  position: absolute;           
+  text-align: center;           
+  width: 120px;                  
+  height: 28px;                 
+  padding: 2px;             
+  font: 12px sans-serif;        
+  background: #F0CCCC;   
+  border: 0px;      
+  border-radius: 8px;           
+  pointer-events: none;         
+}
+
+
+select {
+  position: absolute;
+  right: 10px;
+  top: 10px;              
+  font: 12px sans-serif;               
+  padding: 10px;  
+}
+
+.area {
+    fill: #85A3C2;
+    stroke-width: 0;
+}
+
+</style>
+
+
+<body>
+	<h1> W209 Assignment 3: Leanne Bradley </h1>
+	<h2> My heart rate measured by the Apple Watch</h2>
+  <h3> Yellow and blue denote day and night. Red circles indicate comment tool tips. </h3>
+
+
+  <!-- add selection box for time series   
+  <select id = "opts">
+  <option value="month">3 Month</option>
+  <option value="day">5 Days</option> 
+  </select>
+  -->  
+
+<!-- load the d3.js library -->    
+<script src="http://d3js.org/d3.v3.min.js"></script>
+
+<script>
+
+// Set the dimensions of the canvas / graph
+var margin = {top: 30, right: 20, bottom: 30, left: 50},
+    width = 1000 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+// Parse the date / time
+var parseDate = d3.time.format("%Y%m%d%H%M").parse;
+
+// Set the ranges
+var x = d3.time.scale().range([0, width]);
+var y = d3.scale.linear().range([height, 0]);
+
+// Define the axes
+var xAxis = d3.svg.axis().scale(x)
+    .orient("bottom").ticks(10);
+
+var yAxis = d3.svg.axis().scale(y)
+    .orient("left").ticks(15);
+
+// Define solid area fill
+var area = d3.svg.area()
+    .x(function(d) { return x(d.StartDate); })
+    .y0(height)
+    .y1(function(d) { return y(d.Avg); });
+
+// Define the line
+var valueline = d3.svg.line()
+    .x(function(d) { return x(d.StartDate); })
+    .y(function(d) { return y(d.Avg); });
+    
+// Adds the svg canvas
+var svg = d3.select("body")
+    .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+        .attr("transform", 
+              "translate(" + margin.left + "," + margin.top + ")");
+
+
+// Define gradient area for fill
+var grad = svg.append("svg:defs")
+    .append("svg:linearGradient")
+    .attr("id", "grad");
+
+grad.append("stop").attr("offset", "0%").attr("stop-color", "#FFFF94");
+grad.append("stop").attr("offset", "7%").attr("stop-color", "#FFFF94");
+grad.append("stop").attr("offset", "7%").attr("stop-color", "#B2B2CC");
+grad.append("stop").attr("offset", "17%").attr("stop-color", "#B2B2CC");
+grad.append("stop").attr("offset", "17%").attr("stop-color", "#FFFF94");
+grad.append("stop").attr("offset", "26.5%").attr("stop-color", "#FFFF94");
+grad.append("stop").attr("offset", "26.5%").attr("stop-color", "#B2B2CC");
+grad.append("stop").attr("offset", "36%").attr("stop-color", "#B2B2CC");
+grad.append("stop").attr("offset", "36%").attr("stop-color", "#FFFF94");
+grad.append("stop").attr("offset", "45%").attr("stop-color", "#FFFF94");
+grad.append("stop").attr("offset", "45%").attr("stop-color", "#B2B2CC");
+grad.append("stop").attr("offset", "55%").attr("stop-color", "#B2B2CC");
+grad.append("stop").attr("offset", "55%").attr("stop-color", "#FFFF94");
+grad.append("stop").attr("offset", "64%").attr("stop-color", "#FFFF94");
+grad.append("stop").attr("offset", "64%").attr("stop-color", "#B2B2CC");
+grad.append("stop").attr("offset", "74%").attr("stop-color", "#B2B2CC");
+grad.append("stop").attr("offset", "74%").attr("stop-color", "#FFFF94");
+grad.append("stop").attr("offset", "83.5%").attr("stop-color", "#FFFF94");
+grad.append("stop").attr("offset", "83.5%").attr("stop-color", "#B2B2CC");
+grad.append("stop").attr("offset", "93%").attr("stop-color", "#B2B2CC");
+grad.append("stop").attr("offset", "93%").attr("stop-color", "#FFFF94");
+grad.append("stop").attr("offset", "100%").attr("stop-color", "#FFFF94");
+
+// Add tool tip
+var div = d3.select("body").append("div")   
+    .attr("class", "tooltip")               
+    .style("opacity", 0);
+
+// Get the data
+d3.csv("healthdataheartrate-hr.csv", function(data) {
+  data.forEach(function(d) {
+    d.StartDate = d3.time.format("%Y%m%d%H%M").parse(d.StartDate); /* translates string into date */
+    d.Avg = +d.Avg*60; /* translate bps to bpm */
+  });
+ console.log(data[0]);  /*prints first record in console 
+});*/
+
+// Scale the range of the data
+x.domain(d3.extent(data, function(d) { return d.StartDate; }));
+y.domain([0, d3.max(data, function(d) { return d.Avg; })]);
+
+
+// Add the gradient fill to indicate day and night
+svg.append("path")
+        .datum(data)
+        .attr("class", "area")
+        .attr("d", area)
+        .style("fill", "url(#grad)");
+
+
+// Add the valueline path.
+svg.append("path")
+    .attr("class", "line")
+    .attr("d", valueline(data));
+
+// Add the scatterplot
+svg.selectAll("dot")
+    .data(data)
+  .enter().append("circle")
+  .filter(function(d) { return d.Comment != "" })
+    .style("fill", "#B20000")
+    .attr("r", 3.5)
+    .attr("cx", function(d) { return x(d.StartDate); })
+    .attr("cy", function(d) { return y(d.Avg); })
+.on("mouseover", function(d) {      
+    div.transition()        
+        .duration(200)      
+        .style("opacity", .9);      
+    div .html(d.Comment)  
+        .style("left", (d3.event.pageX) + "px")     
+        .style("top", (d3.event.pageY - 28) + "px");    
+    })                  
+.on("mouseout", function(d) {       
+    div.transition()        
+        .duration(500)      
+        .style("opacity", 0);   
+ });
+
+// Add the X Axis
+svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(xAxis);
+
+// Add the Y Axis
+svg.append("g")
+    .attr("class", "y axis")
+    .call(yAxis);
+
+// Add axis labels
+svg.append("text")
+    .attr("class", "x label")
+    .attr("text-anchor", "end")
+    .attr("x", width)
+    .attr("y", height - 6)
+    .text("Date and Time");
+
+svg.append("text")
+    .attr("class", "y label")
+    .attr("text-anchor", "end")
+    .attr("y", 6)
+    .attr("dy", ".75em")
+    .attr("transform", "rotate(-90)")
+    .text("Heart Rate (bpm)");
+
+});
+
+
+
+</script>
+</body>
