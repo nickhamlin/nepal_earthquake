@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .active { fill: blue !important;}
+        /*.datamaps-key dt, .datamaps-key dd {float: none !important;}
+        .datamaps-key {right: -50px; top: 0;}*/
+    </style>
+</head>
+<body>
+
+<div id="container1" style="border:1px dotted blue; width: 700px; height: 475px; position: relative;"></div>
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="topojson.js"></script>
+<script src="datamaps.world.min.js"></script>
+
+<script>
+//    // render map
+//    new Datamap({
+//        element: document.getElementById('container1'),
+//        projection: 'mercator', // big world map
+//        // countries don't listed in dataset will be painted with this color
+//        fills: { defaultFill: '#F5F5F5' },
+//        geographyConfig: {
+//            highlightBorderWidth: 2,
+//            // don't change color on mouse hover
+//            highlightFillColor: function(geo) {
+//                return geo['fillColor'] || '#F5F5F5';
+//            }
+//        }
+//    });
+
+var earthquakeMap = new Datamap({
+    element: document.getElementById('container1'),
+    scope: 'world',
+    geographyConfig: {
+        popupOnHover: false,
+        highlightOnHover: false
+    },
+    fills: {
+        'CHL': '#1f77b4',
+        'USA': '#9467bd',
+        'IDN': '#ff7f0e',
+        'NPL': '#2ca02c',
+        defaultFill: '#EDDC4E'
+    },
+    data: {
+        'CHL': {fillKey: 'CHL'},
+        'IDN': {fillKey: 'IDN'},
+        'USA': {fillKey: 'USA'},
+        'NPL': {fillKey: 'NPL'}
+    }
+});
+
+var earthquakeData = [{
+    name: 'Chile',
+    radius: 20,
+    yield: 9.5,
+    country: 'CHILE',
+    fillKey: 'CHL',
+    significance: '1,655 killed, 3,000 injured, 2,000,000 homeless',
+    date: '1960-05-22',
+    latitude: -38.29,
+    longitude: -73.05
+},{
+    name: 'USA - Alaska',
+    radius: 16,
+    yield: 9.2,
+    country: 'USA',
+    fillKey: 'USA',
+    significance: '131 killed',
+    date: '1964-03-28',
+    latitude: 61.02,
+    longitude: -147.65
+
+},{
+    name: 'Northern Sumantra',
+    radius: 16,
+    yield: 9.1,
+    country: 'INDONESIA',
+    fillKey: 'IDN',
+    significance: '227,898 killed',
+    date: '1961-10-31',
+    latitude: 3.30,
+    longitude: 95.78
+},{
+        name: 'Nepal',
+        radius: 12,
+        yield: 8.1,
+        country: 'NEPAL',
+        fillKey: 'NPL',
+        significance: '9000 killed, 23000  Injured',
+        date: '2015-04-25',
+        latitude: 28.1,
+        longitude: 84.7
+    }
+];
+//draw bubbles for bombs
+earthquakeMap.bubbles(earthquakeData, {
+    popupTemplate: function (geo, data) {
+        return ['<div class="hoverinfo">' +  data.name,
+            '<br/>Magnitude: ' +  data.yield + ' Richter',
+            '<br/>Country: ' +  data.country + '',
+            '<br/>Date: ' +  data.date + '',
+            '</div>'].join('');
+    }
+});
+
+</script>
+
+</body>
+</html>
