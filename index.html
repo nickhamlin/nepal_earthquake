@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<style>
+
+    div.tagcloud {
+        left: 0px;
+        top: 0px;
+    }
+     path {
+         stroke: white;
+         stroke-width: 0.25px;
+         fill: grey;
+     }
+    .states {
+        fill: #ccc;
+        stroke: #fff;
+    }
+
+    .symbol {
+        fill: steelblue;
+        fill-opacity: .8;
+        stroke: #fff;
+    }
+
+    .tooltip{ background-color:rgba(68,136,187,0.5);;
+        margin: 10px;
+        height: 50px;
+        width: 150px;
+        padding-left: 10px;
+        padding-top: 10px;
+        -webkit-border-radius:10px;
+        -moz-border-radius:10px;
+        border-radius:10px;
+    }
+    .hoverinfo {padding: 4px; border-radius: 1px; background-color: #FFF; box-shadow: 1px 1px 5px #CCC; font-size: 12px; border: 1px solid #CCC; }
+</style>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Nepal Earthquake Word Cloud</title>
+    <link rel="stylesheet" href="css/d3.slider.css" />
+    <link href="css/bootstrap-combined.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="tabbable">
+    <ul class="nav nav-tabs">
+        <li class="active"><a class="whattab" href="#what_tab" data-toggle="tab">What Happened</a></li>
+        <li><a class="magtab" href="#mag_tab" data-toggle="tab">Magnitude</a></li>
+        <li><a class="imptab" href="#imp_tab" data-toggle="tab">Impact</a></li>
+        <li><a class="timetab" href="#time_tab" data-toggle="tab">Timeline</a></li>
+        <li><a class="spreadtab" href="#spread_tab" data-toggle="tab">Spread</a></li>
+        <li><a class="restab" href="#res_tab" data-toggle="tab">Response</a></li>
+        <li><a class="feedtab" href="#feed_tab" data-toggle="tab">Feedback</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" id="time_tab">
+            <!--<h1>A</h1>-->
+            <p>
+                <label for="nHeight"
+                       style="display: inline-block; width: 400px; text-align: right">
+                    month = <span id="nHeight-value">7</span>
+                </label>
+                <input type="range" min="3" max="10" id="nHeight">
+            </p>
+
+            <timeline>
+                <div class="tagcloud"></div>
+            </timeline>
+        </div>
+        <div class="tab-pane" id="mag_tab">
+            <magnitude>
+
+            </magnitude>
+
+        </div>
+    </div>
+</div>
+</body>
+<script src="js/jquery-latest.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/d3.v3.min.js"></script>
+<script src="js/d3.layout.cloud.js"></script>
+<script src="js/datamaps.world.min.js"></script>
+<script src="js/topojson.v0.min.js"></script>
+<script src="js/tooltip.js"></script>
+
+<script>
+    $.ajaxSetup ({
+        cache: false
+    });
+
+    $.getScript("timeline.js");
+    $(".timetab").click(function() {
+        $("timeline").empty();
+        $.getScript("timeline.js");
+    });
+
+</script>
+<script>
+
+    $.getScript("magnitude.js");
+    $(".magtab").click(function() {
+        $("magnitude").empty();
+        $.getScript("magnitude.js");
+    });
+
+
+</script>
+</body>
+</html>
