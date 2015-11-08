@@ -54,6 +54,7 @@
       fill: #345;
       stroke: #fff;
     }
+
     pre.prettyprint {
       border: 1px solid #ccc;
       margin-bottom: 0;
@@ -138,14 +139,10 @@ var projection = d3.geo.mercator()
 var path = d3.geo.path()
     .projection(projection);
 
-/*
-d3.select("svg").on("mousedown.log", function() {
-    console.log(projection.invert(d3.mouse(this)));
-});
-*/
-
-// Will want to make this prettier
-var color = d3.scale.category10();
+// These thresholds are manually defined to make the data look good
+var color = d3.scale.threshold()
+    .domain([.02, 1, 1.5, 2, 2.5,3])
+    .range(["#000000", "#dadaeb", "#bcbddc", "#9e9ac8", "#756bb1", "#54278f"]);
 
 d3.json("test.geojson", function(shape) {
   g.append("g")
@@ -276,7 +273,6 @@ function update_tooltip(d) {
     tooltip
       .classed("invisible", false)
       .attr("style", "left:"+(mouse[0]+15)+"px;top:"+(mouse[1]+20)+"px")
-      // .html(d.properties[prop]) //OLD VERSION
       .html(d.properties['District']+'<br>'+d.properties[question]) //MOD VERSION
   }
 };
