@@ -71,16 +71,42 @@ function wordCloud(selector) {
 // creating an array of words and computing a random size attribute.
 function getWords(i) {
     var xhReq = new XMLHttpRequest();
-    if(i>10) {
+    if(i==1) {
         // Todo: change to s3 location
-        xhReq.open("GET", "output.json", false);
+        xhReq.open("GET", "tweet_1.json", false);
         xhReq.send(null);
     }
-    else
-    {
-        xhReq.open("GET", "output1.json", false);
+    else if(i==2){
+        xhReq.open("GET", "tweet_2.json", false);
         xhReq.send(null);
+
     }
+    else if(i==3){
+        xhReq.open("GET", "tweet_3.json", false);
+        xhReq.send(null);
+
+    }
+    else if(i==4){
+        xhReq.open("GET", "tweet_4.json", false);
+        xhReq.send(null);
+
+    }
+    else if(i==5){
+        xhReq.open("GET", "tweet_5.json", false);
+        xhReq.send(null);
+
+    }
+    else if(i==6){
+        xhReq.open("GET", "tweet_6.json", false);
+        xhReq.send(null);
+
+    }
+    else if(i==7){
+        xhReq.open("GET", "tweet_7.json", false);
+        xhReq.send(null);
+
+    }
+
     var json_data = JSON.parse(xhReq.responseText);
     var data=json_data.data;
     console.log(data);
