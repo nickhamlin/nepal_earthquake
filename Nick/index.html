@@ -20,7 +20,7 @@
       -moz-border-radius: 4px;
       border-radius: 4px;
       cursor: pointer;
-      width: 960px;
+      width: 800px;
       height: 500px;
     }
     .background {
@@ -54,6 +54,7 @@
       fill: #345;
       stroke: #fff;
     }
+
     pre.prettyprint {
       border: 1px solid #ccc;
       margin-bottom: 0;
@@ -65,9 +66,22 @@
     </style>
 
 <body>
-    <h1>Are your basic needs being met?</h1>
+    <h1>What still needs to be done?</h1>
     <div id="map">
     </div>
+    <form>
+    <input
+      type="radio"
+      name='question'
+      value='Are_your_main_problems_being_a'
+      onchange="updateQuestion()" >
+        Are your main problems being addressed?
+      </input>
+    <input type="radio" name='question' value='Do_you_feel_you_have_been_hear'
+    onchange="updateQuestion()" checked>
+        Do you feel you have been heard?
+      </input>
+</form>
 
 <script>
 var width = 960,
@@ -75,6 +89,15 @@ var width = 960,
     centered,
     district,
     vdc;
+
+var question = document.querySelector('input[name = "question"]:checked').value;
+console.log(question);
+
+function updateQuestion() {
+    question = document.querySelector('input[name = "question"]:checked').value;
+    console.log(question);
+    update_all();
+} ;
 
 var tooltip = d3.select("body")
   .append("div")
@@ -105,12 +128,10 @@ svg.append("rect")
 var g = svg.append("g")
     .attr("id", "country");
 
-// TODO albers
 var projection = d3.geo.mercator()
     // LONG, LAT
     .center([85.33, 27.70])
     // LONG, LAT, ROLL
-    // .rotate([13.65, -23, -0.4])
     //.parallels([27.6, 28.3])
     .translate([width / 2, height / 1.5])
     .scale(4500);
@@ -118,16 +139,12 @@ var projection = d3.geo.mercator()
 var path = d3.geo.path()
     .projection(projection);
 
-/*
-d3.select("svg").on("mousedown.log", function() {
-    console.log(projection.invert(d3.mouse(this)));
-});
-*/
+// These thresholds are manually defined to make the data look good
+var color = d3.scale.threshold()
+    .domain([.02, 1, 1.5, 2, 2.5,3])
+    .range(["#000000", "#dadaeb", "#bcbddc", "#9e9ac8", "#756bb1", "#54278f"]);
 
-// Will want to make this prettier
-var color = d3.scale.category10();
-
-d3.json("district_data.geojson", function(shape) {
+d3.json("test.geojson", function(shape) {
   g.append("g")
     .attr("id", "districts")
     .selectAll("path")
@@ -137,18 +154,19 @@ d3.json("district_data.geojson", function(shape) {
         function(d) {
           // d['properties']['id']=d['properties']['NAME_3'];
           // d['properties']['level']='district';
-          return d['properties']['DISTRICT'];
+          return d['properties']['District'];
         })
       .attr("class", "district")
       .attr("class", "active")
       .attr("d", path)
-      .style("fill", function (d) { return color(d.properties['needs']) })
+      .style("fill", function (d) { return color(d.properties[question]) })
       .on("mousemove", update_tooltip)
       // using mouseover for fill is less painful than css hover bc
       // svgs for district/vdc are not hierarchal in the DOM
       .on("mouseover", update_fill)
       .on("mouseout", hide_tooltip)
-      .on("click", click_district);
+      //.on("click", click_district)
+      ;
 
 });
 
@@ -245,8 +263,8 @@ function update_tooltip(d) {
   if (d.properties['VDC_NAME']) {
     prop = 'VDC_NAME';
   }
-  if (d.properties['DISTRICT']) {
-    prop = 'DISTRICT';
+  if (d.properties['District']) {
+    prop = 'District';
   }
   var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
   var display = d.properties[prop];
@@ -255,8 +273,7 @@ function update_tooltip(d) {
     tooltip
       .classed("invisible", false)
       .attr("style", "left:"+(mouse[0]+15)+"px;top:"+(mouse[1]+20)+"px")
-      // .html(d.properties[prop]) //OLD VERSION
-      .html(d.properties['DISTRICT']+'<br>'+d.properties['needs']) //MOD VERSION
+      .html(d.properties['District']+'<br>'+d.properties[question]) //MOD VERSION
   }
 };
 
@@ -264,13 +281,19 @@ function update_fill(d){
   if (d3.select(this).classed('active')) {
     d3.select(this).style("fill", "#ffa")
   }
-}
+};
+
+function update_all(){
+  d3.selectAll("path")
+    .style("fill", function (d) { return color(d.properties[question]) })
+  };
 
 function hide_tooltip(d){
   tooltip.classed("invisible", true);
   // let css rules determine fill color
-  d3.select(this).style("fill", function (d) { return color(d.properties['needs']) })
+  d3.select(this).style("fill", function (d) { return color(d.properties[question]) })
 };
+
 </script>
 </body>
 </html>
