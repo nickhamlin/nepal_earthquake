@@ -1,7 +1,7 @@
-$("timeline").empty();
+//$("timeline").empty();
 
 function wordCloud(selector) {
-
+    debugger;
     var fill = d3.scale.category20();
 
     //Construct the word cloud's SVG element
@@ -71,6 +71,7 @@ function wordCloud(selector) {
 // creating an array of words and computing a random size attribute.
 function getWords(i) {
     var xhReq = new XMLHttpRequest();
+    debugger;
     if(i==1) {
         // Todo: change to s3 location
         xhReq.open("GET", "tweet_1.json", false);
@@ -126,7 +127,7 @@ function showNewWords(vis, i) {
 
 //Create a new instance of the word cloud visualisation.
 var myWordCloud = wordCloud('timeline');
-
+debugger;
 //Start cycling through the demo data
 //Start cycling through the demo data
 d3.select("#nHeight").on("input", function() {
@@ -136,7 +137,7 @@ d3.select("#nHeight").on("input", function() {
 
 function updateHeight(nHeight) {
     // adjust the text on the range slider
-
+    debugger;
     d3.select("#nHeight-value").text(nHeight);
     d3.select("#nHeight").property("value", nHeight);
 
