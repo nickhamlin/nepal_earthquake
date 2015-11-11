@@ -5,11 +5,11 @@
         left: 0px;
         top: 0px;
     }
-     path {
-         stroke: white;
-         stroke-width: 0.25px;
-         fill: grey;
-     }
+    path {
+        stroke: white;
+        stroke-width: 0.25px;
+        fill: grey;
+    }
     .states {
         fill: #ccc;
         stroke: #fff;
@@ -33,78 +33,459 @@
     }
     .hoverinfo {padding: 4px; border-radius: 1px; background-color: #FFF; box-shadow: 1px 1px 5px #CCC; font-size: 12px; border: 1px solid #CCC; }
 </style>
-<html lang="en">
-<head>
+
+<html>
+  <head>
     <meta charset="utf-8">
-    <title>Nepal Earthquake Word Cloud</title>
-    <link rel="stylesheet" href="css/d3.slider.css" />
-    <link href="css/bootstrap-combined.min.css" rel="stylesheet">
-</head>
+    <title>Section scroller one-page template</title>
+    <meta name="description" content="This one page example has a fixed navbar and full page height sections. Each section is vertically centered on larger screens, and then stack responsively on smaller screens. Scrollspy is used to activate the current menu item. This layout also has a contact form example. Uses animate.css, FontAwesome, Google Fonts (Lato and Bitter) and Bootstrap." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Codeply">
 
-<body>
-<div class="tabbable">
-    <ul class="nav nav-tabs">
-        <li class="active"><a class="whattab" href="#what_tab" data-toggle="tab">What Happened</a></li>
-        <li><a class="magtab" href="#mag_tab" data-toggle="tab">Magnitude</a></li>
-        <li><a class="imptab" href="#imp_tab" data-toggle="tab">Impact</a></li>
-        <li><a class="timetab" href="#time_tab" data-toggle="tab">Timeline</a></li>
-        <li><a class="spreadtab" href="#spread_tab" data-toggle="tab">Spread</a></li>
-        <li><a class="restab" href="#res_tab" data-toggle="tab">Response</a></li>
-        <li><a class="feedtab" href="#feed_tab" data-toggle="tab">Feedback</a></li>
-    </ul>
-    <div class="tab-content">
-        <div class="tab-pane" id="time_tab">
-            <!--<h1>A</h1>-->
-            <p>
-                <label for="nHeight"
-                       style="display: inline-block; width: 400px; text-align: right">
-                    month = <span id="nHeight-value">3</span>
-                </label>
-                <input type="range" min="1" max="7" id="nHeight">
-            </p>
 
-            <timeline>
-                <div class="tagcloud"></div>
-            </timeline>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/styles.css" />
+      <script src="js/jquery-latest.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/d3.v3.min.js"></script>
+      <script src="js/d3.layout.cloud.js"></script>
+      <script src="js/datamaps.world.min.js"></script>
+      <script src="js/topojson.v0.min.js"></script>
+      <script src="js/tooltip.js"></script>
+
+
+  </head>
+  <body >
+    <nav class="navbar navbar-trans navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsible">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand text-danger" href="#">BRAND</a>
         </div>
-        <div class="tab-pane" id="mag_tab">
-            <magnitude>
+        <div class="navbar-collapse collapse" id="navbar-collapsible">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="#section1">Start</a></li>
+                <li><a href="#section2">Next</a></li>
+                <li><a href="#section3">Then</a></li>
+                <li><a href="#section4">Form</a></li>
+                <li><a href="#section5">More</a></li>
+                <li><a href="#section6">Last</a></li>
+                <li>&nbsp;</li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-heart-o fa-lg"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="container-fluid" id="section1">
+    <div class="v-center">
+        <h1 class="text-center">Just One Page</h1>
+        <h2 class="text-center lato animate slideInDown">Change It To Say <b>Something</b> Unique</h2>
+        <p class="text-center">
+            <br>
+            <a href="#" class="btn btn-danger btn-lg btn-huge lato" data-toggle="modal" data-target="#myModal">Get Free Membership</a>
+        </p>
+    </div>
+    <a href="#section2">
+        <div class="scroll-down bounceInDown animated">
+            <span>
+        </div>
+    </a>
+</section>
+
+<section class="container-fluid" id="section2">
+    <div class="container v-center">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <div class="panel panel-default slideInLeft animate">
+                            <div class="panel-heading">
+                                <h3>Robust</h3></div>
+                            <div class="panel-body">
+                                <p>There is other content and snippets of details or features that can be placed here..</p>
+                                <hr>GO
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 text-center">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <div class="panel panel-default slideInUp animate">
+                            <div class="panel-heading">
+                                <h3>Simple</h3></div>
+                            <div class="panel-body">
+                                <p>There is other content and snippets of details or features that can be placed here..</p>
+
+                                <hr>GO
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 text-center">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <div class="panel panel-default slideInRight animate">
+                            <div class="panel-heading">
+                                <h3>Clean</h3></div>
+                            <div class="panel-body">
+                                <p>There is other content and snippets of details or features that can be placed here..</p>
+                                <hr>GO
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/row-->
+        <div class="row">
+            <br>
+        </div>
+    </div>
+    <!--/container-->
+</section>
+
+<section>
+    <div class="container-fluid v-center">
+        <div class="row">
+            <div class="col-sm-2 col-sm-offset-2 col-xs-6">
+                <div class="text-center">
+                    <a href="">
+                        <img style="width:100px;" class="img-circle img-responsive img-thumbnail" src="//placehold.it/100/444">
+                    </a>
+                    <h3 class="text-center"></h3>
+                </div>
+            </div>
+            <div class="col-sm-2 col-xs-6">
+                <div class="text-center">
+                    <a href="">
+                        <img style="width:100px;" class="img-circle img-responsive img-thumbnail" src="//placehold.it/100/444">
+                    </a>
+                    <h3 class="text-center"></h3>
+                </div>
+            </div>
+            <div class="col-sm-2 col-xs-6">
+                <div class="text-center">
+                    <a href="">
+                        <img style="width:100px;" class="img-circle img-responsive img-thumbnail" src="//placehold.it/100/444">
+                    </a>
+                    <h3 class="text-center"></h3>
+                </div>
+            </div>
+            <div class="col-sm-2 col-xs-6">
+                <div class="text-center">
+                    <a href="">
+                        <img style="width:100px;" class="img-circle img-responsive img-thumbnail" src="//placehold.it/100/444">
+                    </a>
+                    <h3 class="text-center"></h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-sm-offset-2 col-xs-6">
+                  <div class="text-center">
+                    <a href="">
+                        <img style="width:100px;" class="img-circle img-responsive img-thumbnail" src="//placehold.it/100/444">
+                    </a>
+                    <h3 class="text-center"></h3>
+                </div>
+            </div>
+            <div class="col-sm-2 col-xs-6">
+                <div class="text-center">
+                    <a href="">
+                        <img style="width:100px;" class="img-circle img-responsive img-thumbnail" src="//placehold.it/100/444">
+                    </a>
+                    <h3 class="text-center"></h3>
+                </div>
+            </div>
+            <div class="col-sm-2 col-xs-6">
+                <div class="text-center">
+                    <a href="">
+                        <img style="width:100px;" class="img-circle img-responsive img-thumbnail" src="//placehold.it/100/444">
+                    </a>
+                    <h3 class="text-center"></h3>
+                </div>
+            </div>
+            <div class="col-sm-2 col-xs-6">
+                <div class="text-center">
+                    <a href="">
+                        <img style="width:100px;" class="img-circle img-responsive img-thumbnail" src="//placehold.it/100/444">
+                    </a>
+                    <h3 class="text-center"></h3>
+                </div>
+            </div>
+        </div>
+        <!--/row-->
+    </div>
+</section>
+
+<section class="container-fluid" id="section3">
+    <h1 class="text-center">Magnitude</h1>
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+
+            <magnitude align="center">
 
             </magnitude>
+            <script src="magnitude.js">
+
+            </script>
 
         </div>
     </div>
+</section>
+
+<section id="section4">
+
+
+    <h1 class="text-center">Magnitude</h1>
+    <div class="row">
+        <p>
+            <label for="nHeight"
+                   style="display: inline-block; width: 400px; text-align: right">
+                month = <span id="nHeight-value">3</span>
+            </label>
+            <input type="range" min="1" max="7" id="nHeight">
+        </p>
+
+        <timeline>
+            <div class="tagcloud"></div>
+        </timeline>
+
+        <script src="timeline.js"></script>
+
+        </div>
+    </div>
+
+
+</section>
+
+<section class="container-fluid" id="section5">
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+            <h2 class="text-center lato">Section with Marketing Highlights.</h2>
+            <hr>
+            <div class="media">
+                <h3>Boom</h3>
+                <div class="media-left">
+                    <img src="//placehold.it/100">
+                </div>
+                <div class="media-body media-middle">
+                    <p>Some brand-tacular designs even have home page content that is taller that 12,000 pixels. That's a lotta content Lorem ipsum dolor sit amet, adipiscing elit.</p>
+                </div>
+            </div>
+            <hr>
+            <div class="media">
+                <h3>Boom</h3>
+                <div class="media-body media-middle">
+                    <p>Offset right home page content that is taller that 12,000 pixels. That's a lotta content Lorem ipsum dolor sit amet, adipiscing elit.</p>
+                </div>
+                <div class="media-right">
+                    <img src="//placehold.it/100">
+                </div>
+            </div>
+            <hr>
+            <div class="media">
+                <h3>Boom</h3>
+                <div class="media-left">
+                    <img src="//placehold.it/100">
+                </div>
+                <div class="media-body media-middle">
+                    <p>Some brand-tacular designs even have home page content that is taller that 12,000 pixels. That's a lotta content Lorem ipsum dolor sit amet, adipiscing elit.</p>
+                </div>
+            </div>
+            <hr>
+            <div class="media">
+                <h3>Boom</h3>
+                <div class="media-body media-middle">
+                    <p>Offset right home page content that is taller that 12,000 pixels. That's a lotta content Lorem ipsum dolor sit amet, adipiscing elit.</p>
+                </div>
+                <div class="media-right">
+                    <img src="//placehold.it/100">
+                </div>
+            </div>
+            <hr>
+            <div class="media">
+                <h3>Boom</h3>
+                <div class="media-left">
+                    <img src="//placehold.it/100">
+                </div>
+                <div class="media-body media-middle">
+                    <p>Some brand-tacular designs even have home page content that is taller that 12,000 pixels. That's a lotta content Lorem ipsum dolor sit amet, adipiscing elit.</p>
+                </div>
+            </div>
+            <hr>
+            <div class="media">
+                <h3>Boom</h3>
+                <div class="media-body media-middle">
+                    <p>Offset right home page content that is taller that 12,000 pixels. That's a lotta content Lorem ipsum dolor sit amet, adipiscing elit.</p>
+                </div>
+                <div class="media-right">
+                    <img src="//placehold.it/100">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid" id="section6">
+    <ul class="row list-unstyled">
+        <li class="col-md-6 col-md-offset-1 col-xs-10 col-xs-offset-1">
+            <h3 class="text-center">This will scale down proportionately.</h3>
+        </li>
+        <li class="col-md-3 col-md-offset-0 col-xs-10 col-xs-offset-1 text-center">
+            <a href="" class="center-block btn btn-default btn-lg btn-huge lato animate slideInRight">Responsive Design</a>
+        </li>
+    </ul>
+</section>
+
+<section class="container-fluid" id="section7">
+    <div class="row">
+        <!--fontawesome icons-->
+        <div class="col-sm-1 col-sm-offset-3 col-xs-4 text-center">
+            <i class="fa fa-github fa-4x"></i>
+        </div>
+        <div class="col-sm-1 col-xs-4 text-center">
+            <i class="fa fa-foursquare fa-4x"></i>
+        </div>
+        <div class="col-sm-1 col-xs-4 text-center">
+            <i class="fa fa-pinterest fa-4x"></i>
+        </div>
+        <div class="col-sm-1 col-xs-4 text-center">
+            <i class="fa fa-google-plus fa-4x"></i>
+        </div>
+        <div class="col-sm-1 col-xs-4 text-center">
+            <i class="fa fa-twitter fa-4x"></i>
+        </div>
+        <div class="col-sm-1 col-xs-4 text-center">
+            <i class="fa fa-dribbble fa-4x"></i>
+        </div>
+    </div>
+</section>
+
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-3 column">
+                <h4>Information</h4>
+                <ul class="nav">
+                    <li><a href="about-us.html">Products</a></li>
+                    <li><a href="about-us.html">Services</a></li>
+                    <li><a href="about-us.html">Benefits</a></li>
+                    <li><a href="elements.html">Developers</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-6 col-md-3 column">
+                <h4>Follow Us</h4>
+                <ul class="nav">
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Google+</a></li>
+                    <li><a href="#">Pinterest</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-6 col-md-3 column">
+                <h4>Contact Us</h4>
+                <ul class="nav">
+                    <li><a href="#">Email</a></li>
+                    <li><a href="#">Headquarters</a></li>
+                    <li><a href="#">Management</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-6 col-md-3 column">
+                <h4>Customer Service</h4>
+                <ul class="nav">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Delivery Information</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms &amp; Conditions</a></li>
+                </ul>
+            </div>
+        </div>
+        <!--/row-->
+        <p class="text-right">©2015</p>
+    </div>
+</footer>
+
+<div class="scroll-up">
+    <a href="#"><i class="fa fa-angle-up"></i></a>
 </div>
-</body>
-<script src="js/jquery-latest.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/d3.v3.min.js"></script>
-<script src="js/d3.layout.cloud.js"></script>
-<script src="js/datamaps.world.min.js"></script>
-<script src="js/topojson.v0.min.js"></script>
-<script src="js/tooltip.js"></script>
 
-<script>
-    $.ajaxSetup ({
-        cache: false
-    });
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h2 class="text-center"><img src="//placehold.it/110" class="img-circle"><br>Login</h2>
+            </div>
+            <div class="modal-body row">
+                <h6 class="text-center">COMPLETE THESE FIELDS TO SIGN UP</h6>
+                <form class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0">
+                    <div class="form-group">
+                        <input type="text" class="form-control input-lg" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control input-lg" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-danger btn-lg btn-block">Sign In</button>
+                        <span class="pull-right"><a href="#">Register</a></span><span><a href="#">Need help?</a></span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <h6 class="text-center"><a href="">Privacy is important to us. Click here to read why.</a></h6>
+            </div>
+        </div>
+    </div>
+</div>
+    <!--scripts loaded here-->
+    
 
-    $.getScript("timeline.js");
-    $(".timetab").click(function() {
-        $("timeline").empty();
-        $.getScript("timeline.js");
-    });
-
-</script>
-<script>
-
-    $.getScript("magnitude.js");
-    $(".magtab").click(function() {
-        $("magnitude").empty();
-        $.getScript("magnitude.js");
-    });
 
 
-</script>
-</body>
+    <!--<script>-->
+        <!--$.ajaxSetup ({-->
+            <!--cache: false-->
+        <!--});-->
+
+        <!--$.getScript("timeline.js");-->
+        <!--$(".timetab").click(function() {-->
+            <!--$("timeline").empty();-->
+            <!--$.getScript("timeline.js");-->
+        <!--});-->
+
+    <!--</script>-->
+    <!--<script>-->
+
+        <!--$.getScript("magnitude.js");-->
+        <!--$(".section3").click(function() {-->
+            <!--$("magnitude").empty();-->
+            <!--$.getScript("magnitude.js");-->
+        <!--});-->
+
+
+    <!--</script>-->
+
+  </body>
+
 </html>
