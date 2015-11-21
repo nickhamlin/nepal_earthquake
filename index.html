@@ -32,6 +32,11 @@
         border-radius:10px;
     }
     .hoverinfo {padding: 4px; border-radius: 1px; background-color: #FFF; box-shadow: 1px 1px 5px #CCC; font-size: 12px; border: 1px solid #CCC; }
+
+    div.slider {
+  width: 600px; height: 20px;
+        align-content: center;
+}
 </style>
 
 <html>
@@ -69,16 +74,18 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand text-danger" href="#">BRAND</a>
+            <a class="navbar-brand text-danger" href="#">Nepal Earthquake Analysis</a>
         </div>
         <div class="navbar-collapse collapse" id="navbar-collapsible">
             <ul class="nav navbar-nav navbar-left">
-                <li><a href="#section1">Start</a></li>
+                <li><a href="#section1">What Happened</a></li>
                 <li><a href="#section2">Next</a></li>
-                <li><a href="#section3">Then</a></li>
-                <li><a href="#section4">Form</a></li>
-                <li><a href="#section5">More</a></li>
-                <li><a href="#section6">Last</a></li>
+                <li><a href="#section3">Magnitude</a></li>
+                <li><a href="#section4">Impact</a></li>
+                <li><a href="#section4">Timeline</a></li>
+                <li><a href="#section5">How Word Spread</a></li>
+                <li><a href="#section5">Global Response</a></li>
+                <li><a href="#section6">Community Feedback</a></li>
                 <li>&nbsp;</li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -99,21 +106,21 @@
     </div>
     <a href="#section2">
         <div class="scroll-down bounceInDown animated">
-            <span>
+            <span/>
         </div>
     </a>
 </section>
 
-<section class="container-fluid" id="section2">
+<section class="container-fluid" id="section2" style="max-height: 900px;">
     <div class="container v-center">
-        <div class="row">
+        <div class="row" style="max-height: 900px;">
             <div class="col-sm-4">
                 <div class="row">
                     <div class="col-sm-12 text-center">
                         <div class="panel panel-default slideInLeft animate">
                             <div class="panel-heading">
                                 <h3>Robust</h3></div>
-                            <div class="panel-body">
+                            <div  class="panel-body" style="max-height: 900px;">
                                 <p>There is other content and snippets of details or features that can be placed here..</p>
                                 <hr>GO
                                 <hr>
@@ -239,7 +246,7 @@
 <section class="container-fluid" id="section3">
     <h1 class="text-center">Magnitude</h1>
     <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
+        <div class="col-sm-6 col-sm-offset-1">
 
             <magnitude align="center">
 
@@ -252,30 +259,44 @@
     </div>
 </section>
 
-<section id="section4">
-
-
-    <h1 class="text-center">Magnitude</h1>
-    <div class="row">
-        <p>
+<section id="section4" style=" min-height:950px !important;">
+     <div class="container v-center" style="max-height: 900px;">
+        <div class="row" style="max-height: 900px;">
+            <div class="col-sm-7 col-sm-offset-2" style="max-height: 900px;" >
+                <div class="row">
+                    <div class="col-sm-12 text-center" >
+                        <div class="panel panel-default slideInLeft animate">
+                            <div class="panel-heading">
+                                <h3>Tag Cloud</h3></div>
+                            <div  class="panel-body" style="max-height: 900px;">
+<p>
             <label for="nHeight"
-                   style="display: inline-block; width: 400px; text-align: right">
+                   style="display: inline-block; width: 400px; text-align: center">
                 month = <span id="nHeight-value">3</span>
             </label>
-            <input type="range" min="1" max="7" id="nHeight">
-        </p>
+            <div class="slider" align="center">
+            <input type="range" min="1" max="7" id="rangeHeight">
 
-        <timeline>
-            <div class="tagcloud"></div>
+          </div>
+            <timeline class="tagcloud" align="center">
+            <div >
+             <script src="timeline.js"></script>
+            </div>
+
         </timeline>
 
-        <script src="timeline.js"></script>
 
-        </div>
+        </p>
     </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
-</section>
+            </div>
+         </div>
+ </section>
 
 <section class="container-fluid" id="section5">
     <div class="row">
