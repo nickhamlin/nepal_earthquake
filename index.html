@@ -26,7 +26,7 @@
       <script src="js/datamaps.world.min.js"></script>
       <script src="js/topojson.v0.min.js"></script>
       <script src="js/tooltip.js"></script>
-
+      <!-- Additional scripts are loaded at the bottom -->
 
   </head>
   <body >
@@ -146,14 +146,8 @@
     <h1 class="text-center">Magnitude</h1>
     <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
-
             <magnitude align="center">
-
             </magnitude>
-            <script src="magnitude.js">
-
-            </script>
-
         </div>
     </div>
 </section>
@@ -264,15 +258,33 @@
 </section>
 
 <section class="container-fluid" id="section6">
-    <ul class="row list-unstyled">
-        <li class="col-md-6 col-md-offset-1 col-xs-10 col-xs-offset-1">
-            <h3 class="text-center">This will scale down proportionately.</h3>
-        </li>
-        <li class="col-md-3 col-md-offset-0 col-xs-10 col-xs-offset-1 text-center">
-            <a href="" class="center-block btn btn-default btn-lg btn-huge lato animate slideInRight">Responsive Design</a>
-        </li>
-    </ul>
+  <feedback>
+  <h1>What still needs to be done?</h1>
+  <div id="map">
+    </div>
+  <form>
+  <input
+    type="radio"
+    name='question'
+    value='Are_your_main_problems_being_a'
+    onchange="updateQuestion()">
+      Are your main problems being addressed?
+    </input>
+  <input
+    type="radio"
+    name='question'
+    value='Do_you_feel_you_have_been_hear'
+    onchange="updateQuestion()"
+    checked
+    >
+      Do you feel you have been heard?
+    </input>
+  </form>
+
+</feedback>
 </section>
+
+
 
 <!-- DON'T THINK WE NEED THE SOCIAL MEDIA ICONS -->
 <!--section class="container-fluid" id="section7">
@@ -417,7 +429,7 @@
 
 
     <!--</script>-->
-
+    <script src="maps.js"></script>
   </body>
 
 </html>
