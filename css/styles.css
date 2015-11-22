@@ -247,6 +247,10 @@ path {
 }
 .hoverinfo {padding: 4px; border-radius: 1px; background-color: #FFF; box-shadow: 1px 1px 5px #CCC; font-size: 12px; border: 1px solid #CCC; }
 
+div.slider {
+  width: 600px; height: 20px;
+        align-content: center;
+}
 /* NICK'S CSS*/
 #map {
 	/* mostly a copy of bootstrap's .well */

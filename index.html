@@ -7,8 +7,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Section scroller one-page template</title>
-    <meta name="description" content="This one page example has a fixed navbar and full page height sections. Each section is vertically centered on larger screens, and then stack responsively on smaller screens. Scrollspy is used to activate the current menu item. This layout also has a contact form example. Uses animate.css, FontAwesome, Google Fonts (Lato and Bitter) and Bootstrap." />
+    <title>2015 Nepal Earthquake</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Codeply">
 
@@ -39,7 +38,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <!--a class="navbar-brand text-danger" href="#">BRAND</a-->
+
         </div>
         <div class="navbar-collapse collapse" id="navbar-collapsible">
             <ul class="nav navbar-nav navbar-left">
@@ -75,61 +74,12 @@
 </section>
 
 <section class="container-fluid" id="section2">
-    <div class="container v-center">
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="row">
-                    <div class="col-sm-12 text-center">
-                        <div class="panel panel-default slideInLeft animate">
-                            <div class="panel-heading">
-                                <h3>Robust</h3></div>
-                            <div class="panel-body">
-                                <p>There is other content and snippets of details or features that can be placed here..</p>
-                                <hr>GO
-                                <hr>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 text-center">
-                <div class="row">
-                    <div class="col-sm-12 text-center">
-                        <div class="panel panel-default slideInUp animate">
-                            <div class="panel-heading">
-                                <h3>Simple</h3></div>
-                            <div class="panel-body">
-                                <p>There is other content and snippets of details or features that can be placed here..</p>
-
-                                <hr>GO
-                                <hr>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 text-center">
-                <div class="row">
-                    <div class="col-sm-12 text-center">
-                        <div class="panel panel-default slideInRight animate">
-                            <div class="panel-heading">
-                                <h3>Clean</h3></div>
-                            <div class="panel-body">
-                                <p>There is other content and snippets of details or features that can be placed here..</p>
-                                <hr>GO
-                                <hr>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/row-->
+    <div>
+        <h1 class="text-center">What Happened?</h1>
         <div class="row">
             <br>
         </div>
     </div>
-    <!--/container-->
 </section>
 
 <section id="cleanup">
@@ -145,17 +95,16 @@
 <section class="container-fluid" id="section3">
     <h1 class="text-center">Magnitude</h1>
     <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
+        <div class="col-sm-6 col-sm-offset-1">
             <magnitude align="center">
             </magnitude>
         </div>
     </div>
 </section>
 
-<section id="section4">
-
-
-    <h1 class="text-center">Magnitude</h1>
+<!-- OLD TAGCLOUD THAT WORKS BUT LOOKS WEIRD -->
+<section id="section4" style=" min-height:950px !important;">
+    <h1 class="text-center">Social Media Response</h1>
     <div class="row">
         <p>
             <label for="nHeight"
@@ -173,9 +122,43 @@
 
         </div>
     </div>
-
-
 </section>
+
+<!-- NEW TAGCLOUD THAT LOOKS BETTER BUT DOESN'T WORK -->
+
+<!--section id="section4" style=" min-height:950px !important;">
+  <div class="container v-center" style="max-height: 900px;">
+    <div class="row" style="max-height: 900px;">
+      <div class="col-sm-7 col-sm-offset-2" style="max-height: 900px;" >
+        <div class="row">
+          <div class="col-sm-12 text-center" >
+            <div class="panel panel-default slideInLeft animate">
+              <div class="panel-heading">
+                <h3>Tag Cloud</h3>
+              </div>
+              <div class="panel-body" style="max-height: 900px;">
+                <p>
+                  <label for="nHeight"
+                  style="display: inline-block; width: 400px; text-align: center">
+                  month = <span id="nHeight-value">3</span>
+                  </label>
+                    <div class="slider" align="center">
+                      <input type="range" min="1" max="7" id="rangeHeight">
+                    </div>
+                  <timeline class="tagcloud" align="center">
+                    <div>
+                      <script src="timeline.js"></script>
+                    </div>
+                  </timeline>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section -->
 
 <section id="family">
   <div class="photo">
