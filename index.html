@@ -18,6 +18,7 @@
     <link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="Steve/carousel.css" />
       <script src="js/jquery-latest.js"></script>
       <script src="js/bootstrap.min.js"></script>
       <script src="js/d3.v3.min.js"></script>
@@ -45,6 +46,7 @@
                 <li><a href="#section1">Home</a></li>
                 <li><a href="#section2">What Happened?</a></li>
                 <li><a href="#section3">Magnitude</a></li>
+                <li><a href="#sectionU">Unfolding</a></li>
                 <li><a href="#section4">Impact</a></li>
                 <li><a href="#section5">Global Response</a></li>
                 <li><a href="#section6">Citizen Feedback</a></li>
@@ -100,6 +102,81 @@
         </div>
     </div>
 </section>
+
+<!-- Adding in Unfolding map and story -->
+
+<section id="sectionU" style="background:white; min-height:700px !important;">
+     <div class="container v-center " style="margin: 0; max-height: 900px;">
+        <div class="row" style="max-height: 900px;">
+        
+                                      <h1 class="text-center">An Earthquake Unfolding</h1>
+                                <p class="text-center"> Read on below, and use the interactive map (add layers at top right) to understand more how the earthquake unfolded . </p>
+                               <div  class="col-sm-6" style="padding-top:5%; max-height: 900px;">
+                                    <div id="myCarousel" class="carousel slide">
+                                    <ol class="carousel-indicators">
+                                      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                      <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+                                      <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+                                      <li data-target="#myCarousel" data-slide-to="3" class=""></li>
+                                      <li data-target="#myCarousel" data-slide-to="4" class=""></li>
+                                    </ol>
+                                    <div class="carousel-inner">
+                                      <div class="active item">
+                                        <img style="height:400px;" src="http://www.mountainsoftravelphotos.com/Annapurna/Annapurna%20Sanctuary%203%20to%20Kathmandu/slides/608%20Kathmandu%20From%20Air.jpg" alt="">
+                                        <div class="carousel-caption">
+                                          <h4>Nepal's population</h4>
+                                          <p>Nepal has a population of 27.8m as of 2013. However, due to its mountainous terrain much of the population lives along its borders with India where the land is flatter. The exception is Kathmandu with a population of over 1m living, or rather, perched in the Kathmandu valley at an elevation of 1400m.</p>
+                                        </div>
+                                      </div>
+                                      <div class="item">
+                                        <img style="height:400px;" src="http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/4/28/1430237243637/6e326590-ac3b-4927-b8f2-12667b30bd01-2060x1236.jpeg" alt="">
+                                        <div class="carousel-caption">
+                                          <h4>An epicenter close to the capital</h4>
+                                          <p>The epicenter of the Nepal earthquake occured only 80km NorthWest of Kathmandu, registering at 7.8 on the richter scale. This meant that, while the full force was not felt, the earthquake still shifted the entire city 3 meters south!</p>
+                                        </div>
+                                      </div>
+                                      <div class="item">
+                                         <img style="height:400px;" src="http://cdn.citylab.com/media/img/citylab/2015/04/n7/lead_large.jpg" alt="">
+                                        <div class="carousel-caption">
+                                          <h4>Towns flattened, buildings destroyed</h4>
+                                          <p>The result was the destruction of many towns and buildings across Nepal; particularly those close to the epicenter. 9,000 people were killed and 23,000 injured by the initial shock, with a further 200 killed as a result of aftershocks. The worst loss of life, though, was not felt in the capital.</p>
+                                        </div>
+                                      </div>
+
+                                      <div class="item">
+                                         <img style="height:400px;" src="http://www.journalreporter.com/wp-content/uploads/2015/06/13930511000499_PhotoI.jpg" alt="">
+                                        <div class="carousel-caption">
+                                          <h4>The story of Sindhupalchowk </h4>
+                                          <p>The largest number of deaths occured in the Sindhupalchowk region of Nepal. This area, typically easily accessible, became treacherous to reach post-earthquake due to its steep mountains, narrow roads and the large number of landslides that occured. It took the first rescue vehicles more than 3 hours to arrive from Kathmandu.</p>
+                                        </div>
+                                      </div>
+
+                                       <div class="item">
+                                         <img style="height:400px;" src="Steve/landslides.png" alt="">
+                                        <div class="carousel-caption">
+                                          <h4>Locations of landslides</h4>
+                                          <p>Looking at the location of landslides subsequent to the earthquake it is clear to see that these occured in the regions North of Kathmandu, stretching into Sindhupalchowk.</p>
+                                        </div>
+                                      </div>
+                                    </div>
+
+
+
+
+
+                                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                                    <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+                                  </div>
+                               </div> <!--end col 2 -->
+                            <div  class="col-sm-6" style="max-height: 900px;">
+
+<iframe width="100%" height="520" frameborder="0" src="https://stephentracyis.cartodb.com/viz/dd7d2ace-8d91-11e5-a20b-0e98b61680bf/embed_map" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+    </div><!--end col 10 -->
+
+                </div>
+                 </div>
+ </section>
+
 
 <!-- OLD TAGCLOUD THAT WORKS BUT LOOKS WEIRD -->
 <section id="section4" style=" min-height:950px !important;">
@@ -336,6 +413,7 @@
 
 <!-- Other scripts loaded here-->
   <script src="js/maps.js"></script>
+   <script src="Steve/carousel.js"></script>
 
   </body>
 
