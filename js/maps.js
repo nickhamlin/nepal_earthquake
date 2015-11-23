@@ -18,9 +18,9 @@ var path = d3.geo.path()
 var g = svg.append("g");
 
 // load and display the World
-d3.json("world-110m2.json", function(error, topology) {
+d3.json("data/world-110m2.json", function(error, topology) {
 // load and display the cities
-    d3.csv("cities.csv", function(error, data) {
+    d3.csv("data/cities.csv", function(error, data) {
         g.selectAll("circle")
             .data(data)
             .enter()
