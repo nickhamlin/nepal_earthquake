@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<style>
+
+
+</style>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>2015 Nepal Earthquake</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Codeply">
+
+
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/styles.css" />
+      <script src="js/jquery-latest.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/d3.v3.min.js"></script>
+      <script src="js/d3.layout.cloud.js"></script>
+      <script src="js/datamaps.world.min.js"></script>
+      <script src="js/topojson.v0.min.js"></script>
+      <script src="js/tooltip.js"></script>
+      <!-- Additional scripts are loaded at the bottom -->
+
+  </head>
+  <body >
+    <nav class="navbar navbar-trans navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsible">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-collapsible">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="#section1">Home</a></li>
+                <li><a href="#section2">What Happened?</a></li>
+                <li><a href="#section3">Magnitude</a></li>
+                <li><a href="#section4">Impact</a></li>
+                <li><a href="#section5">Global Response</a></li>
+                <li><a href="#section6">Citizen Feedback</a></li>
+                <li>&nbsp;</li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" data-toggle="modal" data-target="#sourcesModal"><i>Sources and Methods</i></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="container-fluid" id="section1">
+    <div class="v-center">
+        <h1 class="text-center">The 2015 Nepal Earthquake</h1>
+        <h2 class="text-center lato animate slideInDown">Stories, Impact, and Next Steps</h2>
+        <p class="text-center">
+            <br>
+        </p>
+    </div>
+    <a href="#section2">
+        <div class="scroll-down bounceInDown animated">
+            <i class="fa fa-sort-desc"></i>
+        </div>
+    </a>
+</section>
+
+<section class="container-fluid" id="section2">
+    <div>
+        <h1 class="text-center">What Happened?</h1>
+        <div class="row">
+            <br>
+        </div>
+    </div>
+</section>
+
+<section id="cleanup">
+  <div class="photo">
+    <div class="col-sm-6 col-sm-offset-3">
+      <h1 class="lato text-left photo-text">
+        “A lot of people said it lasted for about two minutes. To me, it seemed like forever.”
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section class="container-fluid" id="section3">
+    <h1 class="text-center">Magnitude</h1>
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-1">
+            <magnitude align="center">
+            </magnitude>
+        </div>
+    </div>
+</section>
+
+<!-- OLD TAGCLOUD THAT WORKS BUT LOOKS WEIRD -->
+<section id="section4" style=" min-height:950px !important;">
+   <h1 class="text-center">Social Media Response</h1>
+   <div class="row">
+      <div class="col-sm-7 col-sm-offset-2" style="max-height: 900px;" >
+         <div class="panel panel-default slideInLeft animate">
+            <div class="panel-body" style="max-height: 900px;">
+               <p>
+                  <label for="nHeight"
+                     style="display: inline-block; width: 400px; text-align: right">
+                  month = <span id="nHeight-value">3</span>
+                  </label>
+                  <input type="range" min="1" max="7" id="nHeight">
+                  <timeline class="tagcloud" align="center">
+
+               </timeline>
+               <script src="js/timeline.js"></script>
+               </p>
+            </div>
+         </div>
+      </div>
+   </div>
+   </div>
+</section>
+
+<!-- NEW TAGCLOUD THAT LOOKS BETTER BUT DOESN'T WORK -->
+
+<!--section id="section4" style=" min-height:950px !important;">
+  <div class="container v-center" style="max-height: 900px;">
+    <div class="row" style="max-height: 900px;">
+      <div class="col-sm-7 col-sm-offset-2" style="max-height: 900px;" >
+        <div class="row">
+          <div class="col-sm-12 text-center" >
+            <div class="panel panel-default slideInLeft animate">
+              <div class="panel-heading">
+                <h3>Tag Cloud</h3>
+              </div>
+              <div class="panel-body" style="max-height: 900px;">
+                <p>
+                  <label for="nHeight"
+                  style="display: inline-block; width: 400px; text-align: center">
+                  month = <span id="nHeight-value">3</span>
+                  </label>
+                    <div class="slider" align="center">
+                      <input type="range" min="1" max="7" id="rangeHeight">
+                    </div>
+                  <timeline class="tagcloud" align="center">
+                    <div>
+                      <script src="js/timeline.js"></script>
+                    </div>
+                  </timeline>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section-->
+
+<section id="family">
+  <div class="photo">
+    <div class="col-sm-6 col-sm-offset-3">
+      <h2 class="lato text-left photo-text">
+        “Another quote would go here”
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="container-fluid" id="section5">
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+            <h2 class="text-center lato">How the World Responded</h2>
+
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid" id="section6">
+  <feedback>
+  <h1>What still needs to be done?</h1>
+  <div id="map">
+    </div>
+  <form>
+  <input
+    type="radio"
+    name='question'
+    value='Are_your_main_problems_being_a'
+    onchange="updateQuestion()">
+      Are your main problems being addressed?
+    </input>
+  <input
+    type="radio"
+    name='question'
+    value='Do_you_feel_you_have_been_hear'
+    onchange="updateQuestion()"
+    checked
+    >
+      Do you feel you have been heard?
+    </input>
+  </form>
+
+</feedback>
+</section>
+
+
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-3 column">
+                <h4>About Our Team</h4>
+                <ul class="nav">
+                    <li><a href="#" data-toggle="modal" data-target="#leanneModal"><i>Leanne</i></a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#nickModal"><i>Nick</i></a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#mandeepakModal"><i>Mandeepak</i></a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#stephenModal"><i>Stephen</i></a></li>
+                </ul>
+            </div>
+            <div class="col-xs-6 col-md-3 column">
+                <h4>Follow Us</h4>
+                <ul class="nav">
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Google+</a></li>
+                    <li><a href="#">Pinterest</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-6 col-md-3 column">
+                <h4>Our Program</h4>
+                <ul class="nav">
+                    <li><a href="https://datascience.berkeley.edu/">DataScience@Berkeley</a></li>
+                    <li><a href="http://www.ischool.berkeley.edu/">School of Information</a></li>
+                    <li><a href="http://www.berkeley.edu/">UC Berkeley</a></li>
+                </ul>
+            </div>
+            <!--div class="col-xs-6 col-md-3 column">
+                <h4>Customer Service</h4>
+                <ul class="nav">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Delivery Information</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms &amp; Conditions</a></li>
+                </ul>
+            </div-->
+        </div>
+        <!--/row-->
+        <p class="text-right">©2015</p>
+    </div>
+</footer>
+
+<div class="scroll-up">
+    <a href="#"><i class="fa fa-angle-up"></i></a>
+</div>
+
+<!-- MODAL WINDOWS -->
+
+<!-- SOURCES AND METHODS -->
+<div id="sourcesModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="sourcesModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- MODAL HEADER -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h2 class="text-center"><br>Sources and Methods</h2>
+            </div>
+
+            <!-- MODAL BODY -->
+            <div class="modal-body row">
+              <div class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0">
+                <!-- SAVING THIS OLD STUFF IN CASE ITS USEFUL LATER>
+                <h6 class="text-center">COMPLETE THESE FIELDS TO SIGN UP</h6>
+                <form class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0">
+                    <div class="form-group">
+                        <input type="text" class="form-control input-lg" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control input-lg" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-danger btn-lg btn-block">Sign In</button>
+                        <span class="pull-right"><a href="#">Register</a></span><span><a href="#">Need help?</a></span>
+                    </div>
+                </form>
+              -->
+              <ul>
+                <li>
+                  Raw Nepal Mapping data is avaiable via the <a href="https://data.hdx.rwlabs.org/group/nepal-earthquake">Humanitarian Data Exchange</a>
+                </li>
+                <li>
+                  Citizen Feedback data is available courtesy of <a href="http://www.accountabilitylab.org/">Accountability Lab</a>
+                </li>
+                <li>
+                  All photos available courtesy of <a href="http://www.globalgiving.org">GlobalGiving</a> ©2015 GlobalGiving/Gavin Gough
+                </li>
+              </ul>
+            </div>
+            </div>
+
+            <!-- MODAL FOOTER -->
+            <!--div class="modal-footer">
+                <h6 class="text-center"><a href="">Privacy is important to us. Click here to read why.</a></h6>
+            </div-- >
+
+        </div>
+    </div>
+</div>
+
+<!-- THESE DON'T WORK YET -->
+<!-- I thought it might be interesting to do short modal bio windows -->
+
+<!--div id="leanneModal" class="modal fade bio" tabindex="-1" role="dialog" aria-labelledby="leanneModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- MODAL HEADER ->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h2 class="text-center"><br>Leanne Bradley</h2>
+            </div>
+
+            <!-- MODAL BODY ->
+            <div class="modal-body row">
+              <div class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0">
+                Here's Leanne's Bio
+            </div>
+            </div>
+
+        </div>
+    </div>
+</div -->
+
+<!-- Other scripts loaded here-->
+  <script src="js/maps.js"></script>
+
+  </body>
+
+</html>
