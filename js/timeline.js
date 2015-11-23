@@ -5,7 +5,7 @@ function wordCloud(selector) {
 
     //Construct the word cloud's SVG element
     var svg = d3.select(selector).append("svg")
-        .attr("width", 500)
+        .attr("width", 700)
         .attr("height", 500)
         .append("g").attr("class","tagcloud")
         .attr("transform", "translate(250,250)");
@@ -53,12 +53,12 @@ function wordCloud(selector) {
         //The outside world will need to call this function, so make it part
         // of the wordCloud return value.
         update: function(words) {
-            d3.layout.cloud().size([500, 500])
+            d3.layout.cloud().size([800, 500])
                 .words(words)
                 .padding(5)
                 .rotate(function() { return ~~(Math.random() * 2) * 90; })
                 .font("Impact")
-                .fontSize(function(d) { return d.size+5; })
+                .fontSize(function(d) { return d.size+3; })
                 .on("end", draw)
                 .start();
         }
