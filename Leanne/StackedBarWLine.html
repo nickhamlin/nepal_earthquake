@@ -17,10 +17,13 @@ body {
     shape-rendering: crispEdges;
 }
 
-.axis text {
-  font: 9px sans-serif;
+.y.axis text {
+  font: 10px sans-serif;
 }
 
+.x.axis text {
+  font: 7px sans-serif;
+}
 .bar {
     fill: steelblue;
 }
@@ -65,7 +68,7 @@ var y = d3.scale.linear()
 
 // Our color bands
 var color = d3.scale.ordinal()
-    .range(["#98abc5", "#8a89a6", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+    .range(["#FFFFCC", "#C77E36", "#99C68E", "#43BFC7", "#357EC7"]);
 
 // Use our X scale to set a bottom axis
 var xAxis = d3.svg.axis()
@@ -143,7 +146,7 @@ d3.csv("NepalTotalFundingMatrixPos.csv", function (data) {
         .attr("y", 6)
         .attr("dy", ".71em")
         .style("text-anchor", "end")
-        .text("Cumulative Aid Delivered (USD)");
+        .text("Cumulative Aid Distributed (USD)");
 
     var year = svg.selectAll(".year")
         .data(data)
