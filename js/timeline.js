@@ -1,12 +1,11 @@
 //$("timeline").empty();
 
 function wordCloud(selector) {
-    debugger;
     var fill = d3.scale.category20();
 
     //Construct the word cloud's SVG element
     var svg = d3.select(selector).append("svg")
-        .attr("width", 500)
+        .attr("width", 700)
         .attr("height", 500)
         .append("g").attr("class","tagcloud")
         .attr("transform", "translate(250,250)");
@@ -54,12 +53,12 @@ function wordCloud(selector) {
         //The outside world will need to call this function, so make it part
         // of the wordCloud return value.
         update: function(words) {
-            d3.layout.cloud().size([500, 500])
+            d3.layout.cloud().size([800, 500])
                 .words(words)
                 .padding(5)
                 .rotate(function() { return ~~(Math.random() * 2) * 90; })
                 .font("Impact")
-                .fontSize(function(d) { return d.size+5; })
+                .fontSize(function(d) { return d.size+3; })
                 .on("end", draw)
                 .start();
         }
@@ -71,39 +70,38 @@ function wordCloud(selector) {
 // creating an array of words and computing a random size attribute.
 function getWords(i) {
     var xhReq = new XMLHttpRequest();
-    debugger;
     if(i==1) {
         // Todo: change to s3 location
-        xhReq.open("GET", "tweet_1.json", false);
+        xhReq.open("GET", "data/tweet_1.json", false);
         xhReq.send(null);
     }
     else if(i==2){
-        xhReq.open("GET", "tweet_2.json", false);
+        xhReq.open("GET", "data/tweet_2.json", false);
         xhReq.send(null);
 
     }
     else if(i==3){
-        xhReq.open("GET", "tweet_3.json", false);
+        xhReq.open("GET", "data/tweet_3.json", false);
         xhReq.send(null);
 
     }
     else if(i==4){
-        xhReq.open("GET", "tweet_4.json", false);
+        xhReq.open("GET", "data/tweet_4.json", false);
         xhReq.send(null);
 
     }
     else if(i==5){
-        xhReq.open("GET", "tweet_5.json", false);
+        xhReq.open("GET", "data/tweet_5.json", false);
         xhReq.send(null);
 
     }
     else if(i==6){
-        xhReq.open("GET", "tweet_6.json", false);
+        xhReq.open("GET", "data/tweet_6.json", false);
         xhReq.send(null);
 
     }
     else if(i==7){
-        xhReq.open("GET", "tweet_7.json", false);
+        xhReq.open("GET", "data/tweet_7.json", false);
         xhReq.send(null);
 
     }
@@ -127,7 +125,6 @@ function showNewWords(vis, i) {
 
 //Create a new instance of the word cloud visualisation.
 var myWordCloud = wordCloud('timeline');
-debugger;
 //Start cycling through the demo data
 //Start cycling through the demo data
 d3.select("#nHeight").on("input", function() {
@@ -137,10 +134,8 @@ d3.select("#nHeight").on("input", function() {
 
 function updateHeight(nHeight) {
     // adjust the text on the range slider
-    debugger;
     d3.select("#nHeight-value").text(nHeight);
     d3.select("#nHeight").property("value", nHeight);
-
     console.log(nHeight);
     showNewWords(myWordCloud,nHeight);
     // update the rectangle height
