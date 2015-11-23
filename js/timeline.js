@@ -74,36 +74,36 @@ function getWords(i) {
     debugger;
     if(i==1) {
         // Todo: change to s3 location
-        xhReq.open("GET", "tweet_1.json", false);
+        xhReq.open("GET", "data/tweet_1.json", false);
         xhReq.send(null);
     }
     else if(i==2){
-        xhReq.open("GET", "tweet_2.json", false);
+        xhReq.open("GET", "data/tweet_2.json", false);
         xhReq.send(null);
 
     }
     else if(i==3){
-        xhReq.open("GET", "tweet_3.json", false);
+        xhReq.open("GET", "data/tweet_3.json", false);
         xhReq.send(null);
 
     }
     else if(i==4){
-        xhReq.open("GET", "tweet_4.json", false);
+        xhReq.open("GET", "data/tweet_4.json", false);
         xhReq.send(null);
 
     }
     else if(i==5){
-        xhReq.open("GET", "tweet_5.json", false);
+        xhReq.open("GET", "data/tweet_5.json", false);
         xhReq.send(null);
 
     }
     else if(i==6){
-        xhReq.open("GET", "tweet_6.json", false);
+        xhReq.open("GET", "data/tweet_6.json", false);
         xhReq.send(null);
 
     }
     else if(i==7){
-        xhReq.open("GET", "tweet_7.json", false);
+        xhReq.open("GET", "data/tweet_7.json", false);
         xhReq.send(null);
 
     }
