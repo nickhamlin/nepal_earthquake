@@ -77,13 +77,31 @@
         <h1 class="text-center">What Happened?</h1>
         <div class="row">
             <br>
+            <div class="col-sm-5 col-md-5 col-md-offset-1 col-sm-offset-1 lato text-justify" >
+              On April 25, a 7.8 Magnitude earthquake shook central Nepal,
+              the worst natural disaster in the region in over eighty years. The quake,
+              combined with the aftershocks that followed, were felt as far away as China,
+              India, and Bangledesh, and killed or injured over 30,000 people. As Nepali
+              citizens worked to locate missing friends and family and find food, water,
+              and shelter, many aid organizations mobilized to respond to the immediate
+              needs of those in the affected areas. While millions of dollars in relief
+              funding have been raised to support the ongoing rebuilding process and
+              progress continues on the ground, thousands remain in temporary housing.
+              Six months have passed since then and the news cycle may have
+              moved on to cover more recent events, but the effects of
+              the earthquake remain a central part of the lives of nearly everyone
+              in Nepal.
+            </div>
+            <div class="col-sm-5 col-md-5" >
+              <img class="img-responsive" src="images/whathappened.jpg"/>
+            </div>
         </div>
     </div>
 </section>
 
 <section id="cleanup">
   <div class="photo">
-    <div class="col-sm-6 col-sm-offset-3">
+    <div class="col-sm-7 col-sm-offset-2 col-md-5 col-md-offset-2">
       <h1 class="lato text-left photo-text">
         “A lot of people said it lasted for about two minutes. To me, it seemed like forever.”
       </h1>
@@ -180,30 +198,47 @@
 </section>
 
 <section class="container-fluid" id="section6">
-  <feedback>
-  <h1>What still needs to be done?</h1>
-  <div id="map">
-    </div>
-  <form>
-  <input
-    type="radio"
-    name='question'
-    value='Are_your_main_problems_being_a'
-    onchange="updateQuestion()">
-      Are your main problems being addressed?
-    </input>
-  <input
-    type="radio"
-    name='question'
-    value='Do_you_feel_you_have_been_hear'
-    onchange="updateQuestion()"
-    checked
-    >
-      Do you feel you have been heard?
-    </input>
-  </form>
 
-</feedback>
+  <h1 class="col-md-offset-1">What still needs to be done?</h1>
+  <div class="row">
+    <div class="col-sm-3 col-md-4 col-md-offset-1">
+      <p>While progress has been made in the rebuilding process,
+        there is still a long way for the recovery effort to go. Nepali citizens
+        in the most affected areas still typically report that their needs are
+        not being met and that the feedback they provide on how to improve their
+        communities is not being heard. Moreover, information about the relief
+        effort in the more remote districs of the country is almost non-existent.
+        For this reason, continuing to sustain the long-term response across the
+        country, even several months or years after the earthquake, will be critically
+        important.
+      </p>
+      <h3 class="text-center">Choose a question</h3>
+
+    <form>
+    <input
+      type="radio"
+      name='question'
+      value='Are_your_main_problems_being_a'
+      onchange="updateQuestion()">
+        Are your main problems being addressed?
+      </input>
+      <br>
+    <input
+      type="radio"
+      name='question'
+      value='Do_you_feel_you_have_been_hear'
+      onchange="updateQuestion()"
+      checked
+      >
+        Do you feel you have been heard?
+      </input>
+    </form>
+      </div>
+  <feedback>
+  <div class="col-sm-6 col-md-6 col-md-offset-0 col-lg-6" id="map">
+    </div>
+  </feedback>
+</div>
 </section>
 
 

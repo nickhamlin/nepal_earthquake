@@ -93,11 +93,8 @@ svg.call(zoom)
 // FEEDBACK MAP /////////////////////////////////////////
 
 
-var fb_width = 960,
-  fb_height = 500,
-  centered,
-  district,
-  vdc;
+var fb_width = 550,
+  fb_height = 350
 
 var question = document.querySelector('input[name = "question"]:checked').value;
 console.log(question);
@@ -110,7 +107,8 @@ function updateQuestion() {
 
 var fb_tooltip = d3.select("feedback")
 .append("div")
-.attr("class", "tiptool");
+.attr("class", "tiptool")
+;
 
 var fb_svg = d3.select("#map")
 .append("svg")
@@ -119,21 +117,23 @@ var fb_svg = d3.select("#map")
   .attr("width", fb_width)
   .attr("height", fb_height);
 
-fb_svg.append("rect")
-  .attr("class", "background")
+  var borderPath = fb_svg.append("rect")
+  .attr("height", fb_height)
   .attr("width", fb_width)
-  .attr("height", fb_height);
+  .style("stroke", 'black')
+  .style("fill", "none")
+  .style("stroke-width", 1);
 
 var fb_g = fb_svg.append("g")
   .attr("id", "country");
 
 var fb_projection = d3.geo.mercator()
   // LONG, LAT
-  .center([85.33, 27.70])
+  .center([87, 26.7])
   // LONG, LAT, ROLL
   //.parallels([27.6, 28.3])
   .translate([width / 2, height / 1.5])
-  .scale(4500);
+  .scale(7000);
 
 var fb_path = d3.geo.path()
   .projection(fb_projection);
@@ -169,21 +169,14 @@ fb_g.append("g")
 });
 
 function update_tooltip(d) {
-  var prop;
-  if (d.properties['VDC_NAME']) {
-    prop = 'VDC_NAME';
-  }
-  if (d.properties['District']) {
-    prop = 'District';
-  }
   var mouse = d3.mouse(fb_svg.node()).map( function(d) { return parseInt(d); } );
-  var display = d.properties[prop];
+  var display = d.properties['District'];
 
   if (d3.select(this).classed('active')) {
     fb_tooltip
       .classed("invisible", false)
-      .attr("style", "left:"+(mouse[0])+"px;top:"+(mouse[1]+50)+"px")
-      .html(d.properties['District']+'<br>'+d.properties[question]) //MOD VERSION
+      .attr("style", "left:"+(mouse[0]+300)+"px;top:"+(mouse[1]+50)+"px")
+      .html('District: <b>'+d.properties['District']+'</b><br>Avg. Response:<b>'+d.properties[question]+'</b>') //MOD VERSION
   }
   };
 
