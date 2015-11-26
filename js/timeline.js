@@ -5,8 +5,8 @@ function wordCloud(selector) {
 
     //Construct the word cloud's SVG element
     var svg = d3.select(selector).append("svg")
-        .attr("width", 700)
-        .attr("height", 500)
+        .attr("width", 500)
+        .attr("height", 400)
         .append("g").attr("class","tagcloud")
         .attr("transform", "translate(250,250)");
 
@@ -53,7 +53,7 @@ function wordCloud(selector) {
         //The outside world will need to call this function, so make it part
         // of the wordCloud return value.
         update: function(words) {
-            d3.layout.cloud().size([800, 500])
+            d3.layout.cloud().size([600, 500])
                 .words(words)
                 .padding(5)
                 .rotate(function() { return ~~(Math.random() * 2) * 90; })
@@ -105,6 +105,11 @@ function getWords(i) {
         xhReq.send(null);
 
     }
+    else {
+        xhReq.open("GET", "data/tweet_3.json", false);
+        xhReq.send(null);
+
+    }
 
     var json_data = JSON.parse(xhReq.responseText);
     var data=json_data.data;
@@ -127,6 +132,7 @@ function showNewWords(vis, i) {
 var myWordCloud = wordCloud('timeline');
 //Start cycling through the demo data
 //Start cycling through the demo data
+updateHeight(3);
 d3.select("#nHeight").on("input", function() {
     updateHeight(+this.value);
 
