@@ -139,7 +139,7 @@ var fb_path = d3.geo.path()
   .projection(fb_projection);
 
 // These thresholds are manually defined to make the data look good
-var color = d3.scale.threshold()
+var fb_color = d3.scale.threshold()
   .domain([.02, 1, 1.5, 2, 2.5,3])
   .range(["#000000", "#dadaeb", "#bcbddc", "#9e9ac8", "#756bb1", "#54278f"]);
 
@@ -158,7 +158,7 @@ fb_g.append("g")
     .attr("class", "district")
     .attr("class", "active")
     .attr("d", fb_path)
-    .style("fill", function (d) { return color(d.properties[question]) })
+    .style("fill", function (d) { return fb_color(d.properties[question]) })
     .on("mousemove", update_tooltip)
     // using mouseover for fill is less painful than css hover bc
     // svgs for district/vdc are not hierarchal in the DOM
@@ -188,11 +188,11 @@ function update_fill(d){
 
 function update_all(){
   d3.selectAll("path.active")
-    .style("fill", function (d) { return color(d.properties[question]) })
+    .style("fill", function (d) { return fb_color(d.properties[question]) })
   };
 
 function hide_tooltip(d){
   fb_tooltip.classed("invisible", true);
   // let css rules determine fill color
-  d3.select(this).style("fill", function (d) { return color(d.properties[question]) })
+  d3.select(this).style("fill", function (d) { return fb_color(d.properties[question]) })
   };

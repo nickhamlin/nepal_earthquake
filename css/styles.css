@@ -316,3 +316,47 @@ div.tiptool  {
 	position: absolute;
 }
 div.tiptool .sep { color: #444; font-weight: 300; }
+
+
+/*Leanne's CSS */
+
+/* Removed this since it conflicts with other page fonts and doesn't affect
+(as far as I can tell) Leanne's viz*/
+
+/*body {
+    font: 10px helvetica;
+} */
+
+.axis path, .axis line {
+    fill: none;
+    stroke: #000;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
+.y.axis text {
+  font: 10px helvetica;
+}
+
+.x.axis text {
+    display: none;
+}
+.bar {
+    fill: steelblue;
+}
+
+.x.axis path {
+    display: none;
+}
+
+.area {
+    fill: White;
+    stroke-width: 0;
+}
+
+/*added "response" class to avoid conflicts with other maps*/
+path.response {
+    stroke: #3B3B3B;
+    stroke-width: 2;
+    fill: none;
+}
