@@ -22,6 +22,3 @@ class TweetWordFrequency(MRJob):
 
 if __name__ == '__main__':
     TweetWordFrequency.run()
-
-
-
