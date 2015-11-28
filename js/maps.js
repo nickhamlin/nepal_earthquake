@@ -170,13 +170,20 @@ fb_g.append("g")
 
 function update_tooltip(d) {
   var mouse = d3.mouse(fb_svg.node()).map( function(d) { return parseInt(d); } );
-  var display = d.properties['District'];
+  var tooltip_content = function(){
+    if(d.properties[question]==null)
+      {return 'No Data Available';}
+    else
+      {return d.properties[question].toFixed(2);}
+    };
 
   if (d3.select(this).classed('active')) {
     fb_tooltip
       .classed("invisible", false)
       .attr("style", "left:"+(mouse[0]+300)+"px;top:"+(mouse[1]+50)+"px")
-      .html('District: <b>'+d.properties['District']+'</b><br>Avg. Response:<b>'+d.properties[question]+'</b>') //MOD VERSION
+      .html('District: <b>'+d.properties['District']+'</b><br>Avg. Response:<b>'//+d.properties[question]
+      //+if(d.properties[question]=='null'){'No Data Available';} else {d.properties[question];}
+      +tooltip_content()+'</b>')
   }
   };
 
