@@ -93,7 +93,7 @@ svg.call(zoom)
 // FEEDBACK MAP /////////////////////////////////////////
 
 
-var fb_width = 550,
+var fb_width = 500,
   fb_height = 350
 
 var question = document.querySelector('input[name = "question"]:checked').value;
@@ -129,7 +129,7 @@ var fb_g = fb_svg.append("g")
 
 var fb_projection = d3.geo.mercator()
   // LONG, LAT
-  .center([87, 26.7])
+  .center([87.5, 26.7])
   // LONG, LAT, ROLL
   //.parallels([27.6, 28.3])
   .translate([width / 2, height / 1.5])
@@ -140,10 +140,10 @@ var fb_path = d3.geo.path()
 
 // These thresholds are manually defined to make the data look good
 var fb_color = d3.scale.threshold()
-  .domain([.02, 1, 1.5, 2, 2.5,3])
+  .domain([.02, 1,2, 3,4,5])
   .range(["#000000", "#dadaeb", "#bcbddc", "#9e9ac8", "#756bb1", "#54278f"]);
 
-d3.json("data/feedback_map.geojson", function(shape) {
+d3.json("data/feedback_map_v2.geojson", function(shape) {
 fb_g.append("g")
   .attr("id", "districts")
   .selectAll("path")
@@ -170,13 +170,20 @@ fb_g.append("g")
 
 function update_tooltip(d) {
   var mouse = d3.mouse(fb_svg.node()).map( function(d) { return parseInt(d); } );
-  var display = d.properties['District'];
+  var tooltip_content = function(){
+    if(d.properties[question]==null)
+      {return 'No Data Available';}
+    else
+      {return d.properties[question].toFixed(2);}
+    };
 
   if (d3.select(this).classed('active')) {
     fb_tooltip
       .classed("invisible", false)
       .attr("style", "left:"+(mouse[0]+300)+"px;top:"+(mouse[1]+50)+"px")
-      .html('District: <b>'+d.properties['District']+'</b><br>Avg. Response:<b>'+d.properties[question]+'</b>') //MOD VERSION
+      .html('District: <b>'+d.properties['District']+'</b><br>Avg. Response:<b>'//+d.properties[question]
+      //+if(d.properties[question]=='null'){'No Data Available';} else {d.properties[question];}
+      +tooltip_content()+'</b>')
   }
   };
 

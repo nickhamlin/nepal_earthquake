@@ -11,8 +11,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Codeply">
 
-
-
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
     <link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" rel="stylesheet" />
@@ -29,7 +27,7 @@
       <!-- Additional scripts are loaded at the bottom -->
 
   </head>
-  <body >
+  <body data-spy="scroll" data-target="#navbar-collapsible">
     <nav class="navbar navbar-trans navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -41,7 +39,7 @@
             </button>
 
         </div>
-        <div class="navbar-collapse collapse" id="navbar-collapsible">
+        <div class="nav navbar-collapse collapse" id="navbar-collapsible">
             <ul class="nav navbar-nav navbar-left">
                 <li><a href="#section1">Home</a></li>
                 <li><a href="#section2">What Happened?</a></li>
@@ -52,7 +50,7 @@
                 <li><a href="#section6">Citizen Feedback</a></li>
                 <li>&nbsp;</li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav-sources navbar-nav navbar-right">
                 <li><a href="#" data-toggle="modal" data-target="#sourcesModal"><i>Sources and Methods</i></a></li>
             </ul>
         </div>
@@ -271,20 +269,62 @@
     <input
       type="radio"
       name='question'
-      value='Are_your_main_problems_being_a'
-      onchange="updateQuestion()">
+      value='_1_Are_your_main_problems_being_addressed_?'
+      onchange="updateQuestion()"
+      checked>
         Are your main problems being addressed?
       </input>
       <br>
     <input
       type="radio"
       name='question'
-      value='Do_you_feel_you_have_been_hear'
+      value='_3_Do_ you_have_the_information_you_need_to_get_relief_and_support? '
       onchange="updateQuestion()"
-      checked
       >
-        Do you feel you have been heard?
+        Do you have the information you need to get support?
       </input>
+
+      <br>
+    <input
+      type="radio"
+      name='question'
+      value='_4_Are_you_satisfied_with_what_NGOs_are_doing_for_you_after_the_earthquake? '
+      onchange="updateQuestion()"
+      >
+        Are you satisfied with the work NGOs have done?
+      </input>
+
+      <br>
+    <input
+      type="radio"
+      name='question'
+      value='_2_Are_you_satisfied_with_what_the_government_is_doing_for_you_after_the_earthquake_?'
+      onchange="updateQuestion()"
+      >
+        Are you satisfied with the work government has done?
+      </input>
+
+      <br>
+    <input
+      type="radio"
+      name='question'
+      value='_5_Is_support_fair'
+      onchange="updateQuestion()"
+      >
+        Is support fair?
+      </input>
+
+
+      <br>
+    <input
+      type="radio"
+      name='question'
+      value='_8_Overall_is_the_post-earthquake_relief_effort_making_progress? '
+      onchange="updateQuestion()"
+      >
+        Overall, is the relief effort making progress?
+      </input>
+
     </form>
       </div>
   <feedback>
@@ -301,10 +341,10 @@
             <div class="col-xs-6 col-sm-6 col-md-3 column">
                 <h4>About Our Team</h4>
                 <ul class="nav">
-                    <li><a href="#" data-toggle="modal" data-target="#leanneModal"><i>Leanne</i></a></li>
-                    <li><a href="#" data-toggle="modal" data-target="#nickModal"><i>Nick</i></a></li>
-                    <li><a href="#" data-toggle="modal" data-target="#mandeepakModal"><i>Mandeepak</i></a></li>
-                    <li><a href="#" data-toggle="modal" data-target="#stephenModal"><i>Stephen</i></a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#leanneModal">Leanne</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#nickModal">Nick</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#mandeepakModal">Mandeepak</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#stephenModal">Stephen</a></li>
                 </ul>
             </div>
             <div class="col-xs-6 col-md-3 column">
@@ -312,8 +352,8 @@
                 <ul class="nav">
                     <li><a href="#">Twitter</a></li>
                     <li><a href="#">Facebook</a></li>
-                    <li><a href="#">Google+</a></li>
-                    <li><a href="#">Pinterest</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Github</a></li>
                 </ul>
             </div>
             <div class="col-xs-6 col-md-3 column">
@@ -358,21 +398,6 @@
             <!-- MODAL BODY -->
             <div class="modal-body row">
               <div class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0">
-                <!-- SAVING THIS OLD STUFF IN CASE ITS USEFUL LATER>
-                <h6 class="text-center">COMPLETE THESE FIELDS TO SIGN UP</h6>
-                <form class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0">
-                    <div class="form-group">
-                        <input type="text" class="form-control input-lg" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control input-lg" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-danger btn-lg btn-block">Sign In</button>
-                        <span class="pull-right"><a href="#">Register</a></span><span><a href="#">Need help?</a></span>
-                    </div>
-                </form>
-              -->
               <ul>
                 <li>
                   Raw Nepal Mapping data is avaiable via the <a href="https://data.hdx.rwlabs.org/group/nepal-earthquake">Humanitarian Data Exchange</a>
@@ -386,38 +411,138 @@
               </ul>
             </div>
             </div>
-
-            <!-- MODAL FOOTER -->
-            <!--div class="modal-footer">
-                <h6 class="text-center"><a href="">Privacy is important to us. Click here to read why.</a></h6>
-            </div-- >
-
         </div>
     </div>
 </div>
 
-<!-- THESE DON'T WORK YET -->
-<!-- I thought it might be interesting to do short modal bio windows -->
+<!-- Leanne's Bio -->
+<div id="leanneModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="leanneModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <!-- MODAL HEADER -->
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h2 class="text-center"><br>Leanne Bradley</h2>
+          </div>
 
-<!--div id="leanneModal" class="modal fade bio" tabindex="-1" role="dialog" aria-labelledby="leanneModalLabel" aria-hidden="true">
+          <!-- MODAL BODY -->
+          <div class="modal-body row">
+            <div class="col-md-3 col-md-offset-1 col-xs-3">
+                <img class="img-responsive img-circle" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/053/3dc/3580bb6.jpg"/>
+          </div>
+            <div class="col-md-7 col-md-offset-1 col-xs-9">
+                Here's a bio about Leanne!
+          </div>
+          </div>
+          <div class="modal-footer text-center">
+            <div class="row text-center">
+              <a href="https://www.linkedin.com/in/leannebradley1"><i class="fa fa-linkedin fa-3x">&nbsp;</i></a>
+              <a href="https://github.com/leannebradley"><i class="fa fa-github fa-3x">&nbsp;</i></a>
+              <a href="https://twitter.com/dleanneb"><i class="fa fa-twitter fa-3x">&nbsp;</i></a>
+              <a href="#"><i class="fa fa-facebook fa-3x">&nbsp;</i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<!-- Nick's Bio -->
+<div id="nickModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="nickModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <!-- MODAL HEADER ->
+            <!-- MODAL HEADER -->
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h2 class="text-center"><br>Leanne Bradley</h2>
+                <h2 class="text-center"><br>Nick Hamlin</h2>
             </div>
 
-            <!-- MODAL BODY ->
+            <!-- MODAL BODY -->
             <div class="modal-body row">
-              <div class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0">
-                Here's Leanne's Bio
+              <div class="col-md-3 col-md-offset-1 col-xs-3">
+                  <img class="img-responsive img-circle" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/3/005/06a/339/375b692.jpg"/>
+            </div>
+              <div class="col-md-7 col-md-offset-1 col-xs-9">
+                  Here's a bio about Nick!
             </div>
             </div>
-
+            <div class="modal-footer text-center">
+              <div class="row text-center">
+                  <a href="https://www.linkedin.com/in/nickhamlin"><i class="fa fa-linkedin fa-3x">&nbsp;</i></a>
+                  <a href="https://github.com/nickhamlin"><i class="fa fa-github fa-3x">&nbsp;</i></a>
+                  <a href="https://twitter.com/nicholashamlin"><i class="fa fa-twitter fa-3x">&nbsp;</i></a>
+                  <a href="https://www.facebook.com/nick.hamlin"><i class="fa fa-facebook fa-3x">&nbsp;</i></a>
+              </div>
+            </div>
+          </div>
         </div>
     </div>
-</div -->
+</div>
+
+<!-- Mandeepak's Bio -->
+<div id="mandeepakModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mandeepakModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <!-- MODAL HEADER -->
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h2 class="text-center"><br>Mandeepak Singh</h2>
+          </div>
+
+          <!-- MODAL BODY -->
+          <div class="modal-body row">
+            <div class="col-md-3 col-md-offset-1 col-xs-3">
+                <img class="img-responsive img-circle" src="https://lh4.googleusercontent.com/-cpT4-q7rDhc/AAAAAAAAAAI/AAAAAAAAFAc/vMZ0s4BUYQ0/photo.jpg"/>
+          </div>
+            <div class="col-md-7 col-md-offset-1 col-xs-9">
+                Here's a bio about Mandeepak!
+          </div>
+          </div>
+          <div class="modal-footer text-center">
+            <div class="row text-center">
+              <a href="https://www.linkedin.com/in/mandeepak"><i class="fa fa-linkedin fa-3x">&nbsp;</i></a>
+              <a href="https://github.com/bmandeepak"><i class="fa fa-github fa-3x">&nbsp;</i></a>
+              <a href="#"><i class="fa fa-twitter fa-3x">&nbsp;</i></a>
+              <a href="#"><i class="fa fa-facebook fa-3x">&nbsp;</i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<!-- Steve's Bio -->
+<div id="stephenModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="stephenModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <!-- MODAL HEADER -->
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h2 class="text-center"><br>Stephen Tracy</h2>
+          </div>
+
+          <!-- MODAL BODY -->
+          <div class="modal-body row">
+            <div class="col-md-3 col-md-offset-1 col-xs-3">
+                <img class="img-responsive img-circle" src="https://media.licdn.com/media/p/3/005/020/3f3/13718d0.jpg"/>
+          </div>
+            <div class="col-md-7 col-md-offset-1 col-xs-9">
+                Here's a bio about Stephen!
+          </div>
+          </div>
+          <div class="modal-footer text-center">
+            <div class="row text-center">
+              <a href="https://www.linkedin.com/in/stephentracy1"><i class="fa fa-linkedin fa-3x">&nbsp;</i></a>
+              <a href="#"><i class="fa fa-github fa-3x">&nbsp;</i></a>
+              <a href="https://twitter.com/stephentracy"><i class="fa fa-twitter fa-3x">&nbsp;</i></a>
+              <a href="#"><i class="fa fa-facebook fa-3x">&nbsp;</i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
 
 <!-- Other scripts loaded here-->
   <script src="js/maps.js"></script>
@@ -426,6 +551,17 @@
 =======
   <script src="js/response.js"></script>
 >>>>>>> master
+
+  <script type="text/javascript">
+jQuery(document).ready(function() {
+    setTimeout(updateScrollSpy, 1000);
+});
+function updateScrollSpy() {
+    jQuery('[data-spy="scroll"]').each(function () {
+      var $spy = jQuery(this).scrollspy('refresh')
+    });
+}
+</script>
 
   </body>
 
