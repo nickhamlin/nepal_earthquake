@@ -11,8 +11,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Codeply">
 
-
-
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
     <link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" rel="stylesheet" />
@@ -28,7 +26,7 @@
       <!-- Additional scripts are loaded at the bottom -->
 
   </head>
-  <body >
+  <body data-spy="scroll" data-target="#navbar-collapsible">
     <nav class="navbar navbar-trans navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -40,7 +38,7 @@
             </button>
 
         </div>
-        <div class="navbar-collapse collapse" id="navbar-collapsible">
+        <div class="nav navbar-collapse collapse" id="navbar-collapsible">
             <ul class="nav navbar-nav navbar-left">
                 <li><a href="#section1">Home</a></li>
                 <li><a href="#section2">What Happened?</a></li>
@@ -50,7 +48,7 @@
                 <li><a href="#section6">Citizen Feedback</a></li>
                 <li>&nbsp;</li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav-sources navbar-nav navbar-right">
                 <li><a href="#" data-toggle="modal" data-target="#sourcesModal"><i>Sources and Methods</i></a></li>
             </ul>
         </div>
@@ -468,6 +466,17 @@
 <!-- Other scripts loaded here-->
   <script src="js/maps.js"></script>
   <script src="js/response.js"></script>
+
+  <script type="text/javascript">
+jQuery(document).ready(function() {
+    setTimeout(updateScrollSpy, 1000);
+});
+function updateScrollSpy() {
+    jQuery('[data-spy="scroll"]').each(function () {
+      var $spy = jQuery(this).scrollspy('refresh')
+    });
+}
+</script>
 
   </body>
 
