@@ -1,66 +1,16 @@
-<!DOCTYPE html>
-
-<title>Global Response</title>
-  <link rel="stylesheet" href="Stylesheet.css">
-  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-  <meta charset="utf-8">
-
-<style>
-
-body {
-    font: 10px helvetica;
-}
-.axis path, .axis line {
-    fill: none;
-    stroke: #000;
-    stroke-width: 1;
-    shape-rendering: crispEdges;
-}
-
-.y.axis text {
-  font: 10px helvetica;
-}
-
-.x.axis text {
-    display: none;
-}
-.bar {
-    fill: steelblue;
-}
-
-.x.axis path {
-    display: none;
-}
-
-.area {
-    fill: White;
-    stroke-width: 0;
-}
-
-path { 
-    stroke: #3B3B3B;
-    stroke-width: 2;
-    fill: none;
-}
-
-</style>
-<body>
-
-<script>
-
 // Set our margins
 var margin = {
     top: 20,
-    right: 70,
+    right: 170,
     bottom: 30,
-    left: 35
+    left: 30
     },
-    width = 960 - margin.left - margin.right,
+    width = 960 - margin.left - margin.right, //we may want to play with the size on this later
     height = 500 - margin.top - margin.bottom;
 
 // Our X scale
 var x = d3.scale.ordinal()
-    .rangeRoundBands([0, width], .1);
+    .rangeRoundBands([0, width], .2); //had to expand padding to get lines to show up
 
 // Our Y scale
 var y = d3.scale.linear()
@@ -81,21 +31,21 @@ var yAxis = d3.svg.axis()
     .orient("left")
     .tickFormat(d3.format(".2s"));
 
-// Add our chart to the document body
-var svg = d3.select("body").append("svg")
+// Add our chart to the document
+var svg = d3.select("response").append("svg") //changed to "response" container
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
-var lineSvg = svg.append("g"); 
+var lineSvg = svg.append("g");
 
-var focus = svg.append("g") 
+var focus = svg.append("g")
     .style("display", "none");
 
-// Fetch data 
-d3.csv("NepalTotalFundingMatrixPos.csv", function (data) {
+// Fetch data
+d3.csv("data/NepalTotalFundingMatrixPos.csv", function (data) {
     // Make sure our numbers are really numbers
     data.forEach(function (d) {
         d.Cash = +d.Cash;
@@ -124,7 +74,7 @@ d3.csv("NepalTotalFundingMatrixPos.csv", function (data) {
         d.total = d.types[d.types.length - 1].y1;
         });
 
-    //console.log(data[12]);  //prints first record in console 
+    //console.log(data[12]);  //prints first record in console
 
     // Our X domain is our set of years
     x.domain(data.map(function (d) {
@@ -142,7 +92,7 @@ d3.csv("NepalTotalFundingMatrixPos.csv", function (data) {
           .style("text-anchor", "end")
           .attr("dx", "-.7em")
           .attr("dy", "-.7em")
-          .attr("transform", "rotate(-90)" ); 
+          .attr("transform", "rotate(-90)" );
 
     svg.append("g")
         .attr("class", "y axis")
@@ -191,10 +141,12 @@ d3.csv("NepalTotalFundingMatrixPos.csv", function (data) {
     lineSvg.append("path")  //make sure there is white fill under value line
             .datum(data)
             .attr("class", "area")
+            .attr("class", "response") //added to avoid path style conflicts
             .attr("d", area);
 
     lineSvg.append("path")      // Add the valueline path.
         .attr("class", "line")
+        .attr("class", "response") //added to avoid path style conflicts
         .style("stroke", "#3B3B3B")
         .attr("d", valueline(data));
 
@@ -272,7 +224,7 @@ d3.csv("NepalTotalFundingMatrixPos.csv", function (data) {
         .style("font", "11px georgia")
         .style("font-weight", "bold")
         .style("fill", "#202020");
- 
+
     // place the value at the intersection
     focus.append("text")
         .attr("class", "y1")
@@ -301,7 +253,7 @@ d3.csv("NepalTotalFundingMatrixPos.csv", function (data) {
         .attr("dx", 8)
         .attr("dy", "4.2em")
         .style("font", "11px georgia")
-        .style("fill", "#202020");  
+        .style("fill", "#202020");
 
     // place the Labor value at the intersection
     focus.append("text")
@@ -382,7 +334,7 @@ d3.csv("NepalTotalFundingMatrixPos.csv", function (data) {
             for(j=0; i > (leftEdges[j] + width); j++) {}
                 //do nothing, just increment j until case fails
             d = data[j];
-            
+
 
         focus.select("circle.y")
             .attr("transform",
@@ -487,6 +439,3 @@ d3.csv("NepalTotalFundingMatrixPos.csv", function (data) {
     }
 
 });
-
-
-</script>
