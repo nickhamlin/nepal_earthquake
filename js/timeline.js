@@ -5,8 +5,8 @@ function wordCloud(selector) {
 
     //Construct the word cloud's SVG element
     var svg = d3.select(selector).append("svg")
-        .attr("width", 500)
-        .attr("height", 400)
+        .attr("width", 600)
+        .attr("height", 500)
         .append("g").attr("class","tagcloud")
         .attr("transform", "translate(250,250)");
 
@@ -53,10 +53,9 @@ function wordCloud(selector) {
         //The outside world will need to call this function, so make it part
         // of the wordCloud return value.
         update: function(words) {
-            d3.layout.cloud().size([600, 500])
+            d3.layout.cloud().size([620, 500])
                 .words(words)
                 .padding(5)
-                .rotate(function() { return ~~(Math.random() * 2) * 90; })
                 .font("Impact")
                 .fontSize(function(d) { return d.size+3; })
                 .on("end", draw)
@@ -70,37 +69,37 @@ function wordCloud(selector) {
 // creating an array of words and computing a random size attribute.
 function getWords(i) {
     var xhReq = new XMLHttpRequest();
-    if(i==1) {
+    if(i==4) {
         // Todo: change to s3 location
         xhReq.open("GET", "data/tweet_1.json", false);
         xhReq.send(null);
     }
-    else if(i==2){
+    else if(i==5){
         xhReq.open("GET", "data/tweet_2.json", false);
         xhReq.send(null);
 
     }
-    else if(i==3){
+    else if(i==6){
         xhReq.open("GET", "data/tweet_3.json", false);
         xhReq.send(null);
 
     }
-    else if(i==4){
+    else if(i==7){
         xhReq.open("GET", "data/tweet_4.json", false);
         xhReq.send(null);
 
     }
-    else if(i==5){
+    else if(i==8){
         xhReq.open("GET", "data/tweet_5.json", false);
         xhReq.send(null);
 
     }
-    else if(i==6){
+    else if(i==9){
         xhReq.open("GET", "data/tweet_6.json", false);
         xhReq.send(null);
 
     }
-    else if(i==7){
+    else if(i==10){
         xhReq.open("GET", "data/tweet_7.json", false);
         xhReq.send(null);
 
@@ -132,7 +131,7 @@ function showNewWords(vis, i) {
 var myWordCloud = wordCloud('timeline');
 //Start cycling through the demo data
 //Start cycling through the demo data
-updateHeight(3);
+updateHeight(4);
 d3.select("#nHeight").on("input", function() {
     updateHeight(+this.value);
 

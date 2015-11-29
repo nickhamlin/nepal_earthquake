@@ -8,7 +8,7 @@ var projection = d3.geo.mercator()
     .scale(150)
     .rotate([-180,0]);
 
-var svg = d3.select("magnitude").append("svg")
+var svg = d3.select("#magnitude_id").append("svg")
     .attr("width", width)
     .attr("height", height);
 
@@ -41,7 +41,10 @@ d3.json("data/world-110m2.json", function(error, topology) {
         //function(d) {
         //        return d.radius;
         //    })
-            .style("fill", "red")
+           .style("fill", function(d) {            // <== Add these
+            if (d.country=='Nepal') {return "yellow"}  // <== Add these
+            else    { return "red" }          // <== Add these
+        ;})
             .call(d3.helper.tooltip()
                 .text(function(data, i){
                     return ['<div class="hoverinfo">' +  data.city,
@@ -56,7 +59,10 @@ d3.json("data/world-110m2.json", function(error, topology) {
 
 
             .on('mouseover', function(d, i){ d3.select(this).style({fill: 'skyblue'}); })
-            .on('mouseout', function(d, i){ d3.select(this).style({fill: 'red'}); })
+            .on('mouseout', function(d, i){ d3.select(this).style("fill", function(d) {            // <== Add these
+            if (d.country=='Nepal') {return "yellow"}  // <== Add these
+            else    { return "red" }          // <== Add these
+        ;}); })
 
     });
 
@@ -76,16 +82,16 @@ d3.json("data/world-110m2.json", function(error, topology) {
 
 
 // zoom and pan
-var zoom = d3.behavior.zoom()
-    .on("zoom",function() {
-        g.attr("transform","translate("+
-            d3.event.translate.join(",")+")scale("+d3.event.scale+")");
-        g.selectAll("circle")
-            .attr("d", path.projection(projection));
-        g.selectAll("path")
-            .attr("d", path.projection(projection));
-    });
-svg.call(zoom)
+//var zoom = d3.behavior.zoom()
+//    .on("zoom",function() {
+//        g.attr("transform","translate("+
+//            d3.event.translate.join(",")+")scale("+d3.event.scale+")");
+//        g.selectAll("circle")
+//            .attr("d", path.projection(projection));
+//        g.selectAll("path")
+//            .attr("d", path.projection(projection));
+//    });
+//svg.call(zoom)
 
 
 
