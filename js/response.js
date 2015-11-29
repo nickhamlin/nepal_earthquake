@@ -2,11 +2,11 @@
 var margin = {
     top: 20,
     right: 170,
-    bottom: 30,
-    left: 30
+    bottom: 50,
+    left: 40
     },
-    width = 960 - margin.left - margin.right, //we may want to play with the size on this later
-    height = 500 - margin.top - margin.bottom;
+    width = 1100 - margin.left - margin.right, //we may want to play with the size on this later
+    height = 600 - margin.top - margin.bottom;
 
 // Our X scale
 var x = d3.scale.ordinal()
@@ -129,20 +129,10 @@ d3.csv("data/NepalTotalFundingMatrixPos.csv", function (data) {
         });
 
 
-    var area = d3.svg.area()  //make sure there is white fill under value line
-        .x(function(d) { return x(d.year); })
-        .y0(function(d) { return y(d.total); })
-        .y1(function(d) { return y(d.TotalFunding); });
-
     var valueline = d3.svg.line()
         .x(function(d) { return x(d.year); })
         .y(function(d) { return y(d.TotalFunding); });
 
-    lineSvg.append("path")  //make sure there is white fill under value line
-            .datum(data)
-            .attr("class", "area")
-            .attr("class", "response") //added to avoid path style conflicts
-            .attr("d", area);
 
     lineSvg.append("path")      // Add the valueline path.
         .attr("class", "line")
@@ -152,7 +142,7 @@ d3.csv("data/NepalTotalFundingMatrixPos.csv", function (data) {
 
 
     lineSvg.append("text")
-        .attr("transform", "translate(" + (width-115) + "," + (y(data[121].TotalFunding)-10) + ")")
+        .attr("transform", "translate(" + (width-125) + "," + (y(data[121].TotalFunding)-10) + ")")
         .attr("dy", ".5em")
         .attr("text-anchor", "start")
         .style("fill", "#3B3B3B")
@@ -277,7 +267,7 @@ d3.csv("data/NepalTotalFundingMatrixPos.csv", function (data) {
         .style("stroke-width", "3.5px")
         .style("opacity", 1)
         .attr("dx", 8)
-        .attr("dy", "7.4em");
+        .attr("dy", "7.4em"); 
     focus.append("text")
         .attr("class", "y10")
         .attr("dx", 8)
@@ -292,7 +282,7 @@ d3.csv("data/NepalTotalFundingMatrixPos.csv", function (data) {
         .style("stroke-width", "3.5px")
         .style("opacity", 1)
         .attr("dx", 8)
-        .attr("dy", "9.1em");
+        .attr("dy", "9.1em"); 
     focus.append("text")
         .attr("class", "y12")
         .attr("dx", 8)

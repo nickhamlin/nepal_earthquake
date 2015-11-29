@@ -68,7 +68,7 @@ var y = d3.scale.linear()
 
 // Our color bands
 var color = d3.scale.ordinal()
-    .range([ "#99C68E", "#C77E36", "#EAEAEA", "#43BFC7", "#357EC7"]);
+    .range([ "Black", "#C77E36", "#EAEAEA", "#43BFC7", "#357EC7"]);  //#99C68E
 
 // Use our X scale to set a bottom axis
 var xAxis = d3.svg.axis()
@@ -182,7 +182,7 @@ d3.csv("NepalTotalFundingMatrixPos.csv", function (data) {
     var area = d3.svg.area()  //make sure there is white fill under value line
         .x(function(d) { return x(d.year); })
         .y0(function(d) { return y(d.total); })
-        .y1(function(d) { return y(d.TotalFunding); });
+        .y1(function(d) { return y(d.TotalFunding); }); 
 
     var valueline = d3.svg.line()
         .x(function(d) { return x(d.year); })
