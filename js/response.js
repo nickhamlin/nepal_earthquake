@@ -201,13 +201,6 @@ d3.csv("data/NepalTotalFundingMatrixPos.csv", function (data) {
 
     // place the date at the intersection
     focus.append("text")
-        .attr("class", "y3")
-        .style("stroke", "white")
-        .style("stroke-width", "3.5px")
-        .style("opacity", 1)
-        .attr("dx", 8)
-        .attr("dy", "1em");
-    focus.append("text")
         .attr("class", "y4")
         .attr("dx", 8)
         .attr("dy", "1em")
@@ -217,91 +210,49 @@ d3.csv("data/NepalTotalFundingMatrixPos.csv", function (data) {
 
     // place the value at the intersection
     focus.append("text")
-        .attr("class", "y1")
-        .style("stroke", "white")
-        .style("stroke-width", "3.5px")
-        .style("opacity", 1)
-        .attr("dx", 8)
-        .attr("dy", "2.6em");
-    focus.append("text")
         .attr("class", "y2")
         .attr("dx", 8)
-        .attr("dy", "2.6em")
+        .attr("dy", "2.3em")
         .style("font", "11px georgia")
         .style("fill", "#202020");
 
     // place the Cash value at the intersection
     focus.append("text")
-        .attr("class", "y5")
-        .style("stroke", "white")
-        .style("stroke-width", "3.5px")
-        .style("opacity", 1)
-        .attr("dx", 8)
-        .attr("dy", "4.2em");
-    focus.append("text")
         .attr("class", "y6")
         .attr("dx", 8)
-        .attr("dy", "4.2em")
+        .attr("dy", "3.6em")
         .style("font", "11px georgia")
         .style("fill", "#202020");
 
     // place the Labor value at the intersection
     focus.append("text")
-        .attr("class", "y7")
-        .style("stroke", "white")
-        .style("stroke-width", "3.5px")
-        .style("opacity", 1)
-        .attr("dx", 8)
-        .attr("dy", "5.8em");
-    focus.append("text")
         .attr("class", "y8")
         .attr("dx", 8)
-        .attr("dy", "5.8em")
+        .attr("dy", "4.9em")
         .style("font", "11px georgia")
         .style("fill", "#202020");
 
     // place the Medical Aid value at the intersection
-    focus.append("text")
-        .attr("class", "y9")
-        .style("stroke", "white")
-        .style("stroke-width", "3.5px")
-        .style("opacity", 1)
-        .attr("dx", 8)
-        .attr("dy", "7.4em"); 
-    focus.append("text")
+   focus.append("text")
         .attr("class", "y10")
         .attr("dx", 8)
-        .attr("dy", "7.4em")
+        .attr("dy", "6.2em")
         .style("font", "11px georgia")
         .style("fill", "#202020");
 
     // place the Non Food Items value at the intersection
     focus.append("text")
-        .attr("class", "y11")
-        .style("stroke", "white")
-        .style("stroke-width", "3.5px")
-        .style("opacity", 1)
-        .attr("dx", 8)
-        .attr("dy", "9.1em"); 
-    focus.append("text")
         .attr("class", "y12")
         .attr("dx", 8)
-        .attr("dy", "9.1em")
+        .attr("dy", "7.5em")
         .style("font", "11px georgia")
         .style("fill", "#202020");
 
     // place the Shelter value at the intersection
     focus.append("text")
-        .attr("class", "y13")
-        .style("stroke", "white")
-        .style("stroke-width", "3.5px")
-        .style("opacity", 1)
-        .attr("dx", 8)
-        .attr("dy", "10.9em");
-    focus.append("text")
         .attr("class", "y14")
         .attr("dx", 8)
-        .attr("dy", "10.9em")
+        .attr("dy", "8.8em")
         .style("font", "11px georgia")
         .style("fill", "#202020");
 
@@ -331,84 +282,49 @@ d3.csv("data/NepalTotalFundingMatrixPos.csv", function (data) {
                   "translate(" + x(d.year) + "," +
                                  y(d.TotalFunding) + ")");
 
-        focus.select("text.y1")
-            .attr("transform",
-                  "translate(" + x(d.year) + "," +
-                                 y(d.TotalFunding) + ")")
-            .text("Total Funding: $" + Math.round(d.TotalFunding/1000000) + " M");
-
+     
         focus.select("text.y2")
             .attr("transform",
                   "translate(" + x(d.year) + "," +
                                  y(d.TotalFunding) + ")")
             .text("Total Funding: $" + Math.round(d.TotalFunding/1000000) + " M");
 
-        focus.select("text.y3")
-            .attr("transform",
-                  "translate(" + x(d.year) + "," +
-                                 y(d.TotalFunding) + ")")
-            .text("Date: " + d.year);
-
+   
         focus.select("text.y4")
             .attr("transform",
                   "translate(" + x(d.year) + "," +
                                  y(d.TotalFunding) + ")")
             .text("Date: " + d.year);
 
-        focus.select("text.y5")
-            .attr("transform",
-                  "translate(" + x(d.year) + "," +
-                                 y(d.TotalFunding) + ")")
-            .text("Cash Aid: $" + Math.round(d.Cash/100000)/10 + " M");
-
+    
         focus.select("text.y6")
             .attr("transform",
                   "translate(" + x(d.year) + "," +
                                  y(d.TotalFunding) + ")")
             .text("Cash Aid: $" + Math.round(d.Cash/100000)/10 + " M");
 
-        focus.select("text.y7")
-            .attr("transform",
-                  "translate(" + x(d.year) + "," +
-                                 y(d.TotalFunding) + ")")
-            .text("Labor Aid: $" + Math.round(d.Labor/100000)/10 + " M");
-
+    
         focus.select("text.y8")
             .attr("transform",
                   "translate(" + x(d.year) + "," +
                                  y(d.TotalFunding) + ")")
             .text("Labor Aid: $" + Math.round(d.Labor/100000)/10 + " M");
 
-        focus.select("text.y9")
-            .attr("transform",
-                  "translate(" + x(d.year) + "," +
-                                 y(d.TotalFunding) + ")")
-            .text("Medical Aid: $" + Math.round(d.MedicalAid/100000)/10 + " M");
-
+    
         focus.select("text.y10")
             .attr("transform",
                   "translate(" + x(d.year) + "," +
                                  y(d.TotalFunding) + ")")
             .text("Medical Aid: $" + Math.round(d.MedicalAid/100000)/10 + " M");
 
-        focus.select("text.y11")
-            .attr("transform",
-                  "translate(" + x(d.year) + "," +
-                                 y(d.TotalFunding) + ")")
-            .text("Non Food Item Aid: $" + Math.round(d.NonFoodItems/100000)/10 + " M");
-
+  
         focus.select("text.y12")
             .attr("transform",
                   "translate(" + x(d.year) + "," +
                                  y(d.TotalFunding) + ")")
             .text("Non Food Item Aid: $" + Math.round(d.NonFoodItems/100000)/10 + " M");
 
-        focus.select("text.y13")
-            .attr("transform",
-                  "translate(" + x(d.year) + "," +
-                                 y(d.TotalFunding) + ")")
-            .text("Shelter Aid: $" + Math.round(d.Shelter/100000)/10 + " M");
-
+  
         focus.select("text.y14")
             .attr("transform",
                   "translate(" + x(d.year) + "," +
