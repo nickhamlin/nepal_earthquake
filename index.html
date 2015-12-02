@@ -313,69 +313,25 @@
       <h3 class="text-center">Choose a question</h3>
 
     <form>
-    <input
-      type="radio"
-      name='question'
-      value='_1_Are_your_main_problems_being_addressed_?'
-      onchange="updateQuestion()"
-      checked>
-        Are your main problems being addressed?
-      </input>
-      <br>
-    <input
-      type="radio"
-      name='question'
-      value='_3_Do_ you_have_the_information_you_need_to_get_relief_and_support? '
-      onchange="updateQuestion()"
-      >
-        Do you have the information you need to get support?
-      </input>
-
-      <br>
-    <input
-      type="radio"
-      name='question'
-      value='_4_Are_you_satisfied_with_what_NGOs_are_doing_for_you_after_the_earthquake? '
-      onchange="updateQuestion()"
-      >
-        Are you satisfied with the work NGOs have done?
-      </input>
-
-      <br>
-    <input
-      type="radio"
-      name='question'
-      value='_2_Are_you_satisfied_with_what_the_government_is_doing_for_you_after_the_earthquake_?'
-      onchange="updateQuestion()"
-      >
-        Are you satisfied with the work government has done?
-      </input>
-
-      <br>
-    <input
-      type="radio"
-      name='question'
-      value='_5_Is_support_fair'
-      onchange="updateQuestion()"
-      >
-        Is support fair?
-      </input>
-
-
-      <br>
-    <input
-      type="radio"
-      name='question'
-      value='_8_Overall_is_the_post-earthquake_relief_effort_making_progress? '
-      onchange="updateQuestion()"
-      >
-        Overall, is the relief effort making progress?
-      </input>
+      
+      <select name="questions" onchange="updateQuestion()">
+        <option value="_1_Are_your_main_problems_being_addressed_?" selected>Are your main problems being addressed?</option>
+        <option value="_3_Do_ you_have_the_information_you_need_to_get_relief_and_support? ">Do you have the information you need to get support?</option>
+        <option value="_4_Are_you_satisfied_with_what_NGOs_are_doing_for_you_after_the_earthquake? ">Are you satisfied with the work NGOs have done?</option>
+        <option value="_2_Are_you_satisfied_with_what_the_government_is_doing_for_you_after_the_earthquake_?">Are you satisfied with the work government has done?</option>
+        <option value="_5_Is_support_fair">Is support fair?</option>
+        <option value="_8_Overall_is_the_post-earthquake_relief_effort_making_progress? ">Overall, is the relief effort making progress?</option>
+      </select>
 
     </form>
       </div>
   <feedback>
-  <div class="col-sm-6 col-md-6 col-md-offset-0 col-lg-6" id="map">
+    <div class="col-sm-6 col-md-6 col-md-offset-0 col-lg-6">
+      <h3 id="question-title" class="text-center">
+        asdfadsf
+      </h3>
+    </div>
+  <div class="col-sm-6 col-md-6 col-md-offset-0 col-lg-6 text-center" id="map">
     </div>
   </feedback>
 </div>

@@ -102,12 +102,12 @@ d3.json("data/world-110m2.json", function(error, topology) {
 var fb_width = 500,
   fb_height = 350
 
-var question = document.querySelector('input[name = "question"]:checked').value;
-console.log(question);
+//var question = document.querySelector('option:checked').value;
 
 function updateQuestion() {
-  question = document.querySelector('input[name = "question"]:checked').value;
-  console.log(question);
+  question = document.querySelector('option:checked').value;
+  question_text= document.querySelector('option:checked').text;
+  document.getElementById("question-title").innerText = question_text
   update_all();
 } ;
 
@@ -148,6 +148,8 @@ var fb_path = d3.geo.path()
 var fb_color = d3.scale.threshold()
   .domain([.02, 1,2, 3,4,5])
   .range(["#000000", "#dadaeb", "#bcbddc", "#9e9ac8", "#756bb1", "#54278f"]);
+
+updateQuestion();
 
 d3.json("data/feedback_map_v2.geojson", function(shape) {
 fb_g.append("g")
