@@ -296,24 +296,22 @@
 </section>
 
 <section class="container-fluid" id="section6">
-
-  <h1 class="col-md-offset-1">What still needs to be done?</h1>
+  <div class="row">
+    <div class="col-sm-3 col-md-10 col-md-offset-1 text-center">
+      <h1>What still needs to be done?</h1>
+    <p> Six months after the earthquake, how far has the relief effort come?<br>
+      Choose a question to see how Nepali citizens in the most affected regions
+      feel about the progress so far.
+    </p>
+  </div>
+  </div>
   <div class="row">
     <div class="col-sm-3 col-md-4 col-md-offset-1">
-      <p>While progress has been made in the rebuilding process,
-        there is still a long way for the recovery effort to go. Nepali citizens
-        in the most affected areas still typically report that their needs are
-        not being met and that the feedback they provide on how to improve their
-        communities is not being heard. Moreover, information about the relief
-        effort in the more remote districs of the country is almost non-existent.
-        For this reason, continuing to sustain the long-term response across the
-        country, even several months or years after the earthquake, will be critically
-        important.
-      </p>
+
       <h3 class="text-center">Choose a question</h3>
 
     <form>
-      
+
       <select name="questions" onchange="updateQuestion()">
         <option value="_1_Are_your_main_problems_being_addressed_?" selected>Are your main problems being addressed?</option>
         <option value="_3_Do_ you_have_the_information_you_need_to_get_relief_and_support? ">Do you have the information you need to get support?</option>
@@ -324,12 +322,27 @@
       </select>
 
     </form>
+
+    <div class="row top-buffer" style="height:fixed">
+      <div id="question-desc" class="col-md-12 col-md-offset-0">
+      <p>
+        In general, most citizens feel their needs are not being met,
+        especially in the most-highly affected districts.
+        Only residents of Gorkha district responded towards the
+        positive side of the scale.
+      </p>
+      </div>
+  </div>
+
+    <div class="row top-buffer">
+      <div class="col-md-12 col-md-offset-0">
+        <img id="question-image" class="img-responsive" src="https://www.globalgiving.org/pfil/20336/pict_original.jpg"/>
+      </div>
+  </div>
       </div>
   <feedback>
     <div class="col-sm-6 col-md-6 col-md-offset-0 col-lg-6">
-      <h3 id="question-title" class="text-center">
-        asdfadsf
-      </h3>
+      <h3 id="question-title" class="text-center">Are your main problems being addressed?</h3>
     </div>
   <div class="col-sm-6 col-md-6 col-md-offset-0 col-lg-6 text-center" id="map">
     </div>
