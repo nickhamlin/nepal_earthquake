@@ -10,6 +10,11 @@ function wordCloud(selector) {
         .append("g").attr("class","tagcloud")
         .attr("transform", "translate(250,250)");
 
+    var color = d3.scale.linear()
+            .domain([0,1,2,3,4,5,6,10,15,20,100])
+            .range(["#ddd", "#ccc", "#bbb", "#aaa", "#999", "#888", "#777", "#666", "#555", "#444", "#333", "#222"]);
+
+
 
     //Draw the word cloud
     function draw(words) {
@@ -20,7 +25,7 @@ function wordCloud(selector) {
         cloud.enter()
             .append("text")
             .style("font-family", "Impact")
-            .style("fill", function(d, i) { return fill(i); })
+            .style("fill", function(d, i) { return color(i); })
             .attr("text-anchor", "middle")
             .attr('font-size', 1)
             .text(function(d) { return d.text; });

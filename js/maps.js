@@ -242,4 +242,8 @@ function hide_tooltip(d){
   d3.select(this).style("fill", function (d) { return fb_color(d.properties[question]) })
   };
 
+<<<<<<< HEAD
 updateQuestion();
+=======
+updateQuestion();
+>>>>>>> 91d462dcc6b9beca7dbbda50f140925a691d5c13
