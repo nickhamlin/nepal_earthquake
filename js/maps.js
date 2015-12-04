@@ -42,8 +42,8 @@ d3.json("data/world-110m2.json", function(error, topology) {
         //        return d.radius;
         //    })
            .style("fill", function(d) {            // <== Add these
-            if (d.country=='Nepal') {return "yellow"}  // <== Add these
-            else    { return "red" }          // <== Add these
+            if (d.country=='Nepal') {return d3.rgb('153','216','201')}  // <== Add these
+            else    { return "steelblue" }          // <== Add these
         ;})
             .call(d3.helper.tooltip()
                 .text(function(data, i){
@@ -58,11 +58,37 @@ d3.json("data/world-110m2.json", function(error, topology) {
                     //console.log(d.lat);
 
 
-            .on('mouseover', function(d, i){ d3.select(this).style({fill: 'skyblue'}); })
+            .on('mouseover', function(d, i){ d3.select(this).style("fill", function(d) {            // <== Add these
+
+                if (d.country=='Nepal') {
+
+                return d3.rgb('153','216','201');
+            }  // <== Add these
+            else
+                {
+                    return "red";
+                 }          // <== Add these
+
+
+            });
+                drawbarchart("#magnitude_bar_id",d['city']);
+
+            })
             .on('mouseout', function(d, i){ d3.select(this).style("fill", function(d) {            // <== Add these
-            if (d.country=='Nepal') {return "yellow"}  // <== Add these
-            else    { return "red" }          // <== Add these
-        ;}); })
+                drawbarchart("#magnitude_bar_id",'2015 Nepal Earthquake');
+                if (d.country=='Nepal') {
+
+                return d3.rgb('153','216','201');
+            }  // <== Add these
+            else
+                {
+                    return "steelblue";
+                 }
+
+
+
+
+        }); })
 
     });
 
@@ -102,12 +128,18 @@ d3.json("data/world-110m2.json", function(error, topology) {
 var fb_width = 500,
   fb_height = 350
 
-var question = document.querySelector('input[name = "question"]:checked').value;
-console.log(question);
+var question_data;
+
+d3.json("data/question_data.json", function(json) {
+  question_data=json;
+});
 
 function updateQuestion() {
-  question = document.querySelector('input[name = "question"]:checked').value;
-  console.log(question);
+  question = document.querySelector('option:checked').value;
+  //question_text= document.querySelector('option:checked').text;
+  document.getElementById("question-title").innerText = question_data[question]["text"];
+  document.getElementById("question-desc").innerText = question_data[question]["description"];
+  document.getElementById("question-image").src = question_data[question]["image"];
   update_all();
 } ;
 
@@ -186,7 +218,7 @@ function update_tooltip(d) {
   if (d3.select(this).classed('active')) {
     fb_tooltip
       .classed("invisible", false)
-      .attr("style", "left:"+(mouse[0]+300)+"px;top:"+(mouse[1]+50)+"px")
+      .attr("style", "left:"+(mouse[0]+300)+"px;top:"+(mouse[1]+150)+"px")
       .html('District: <b>'+d.properties['District']+'</b><br>Avg. Response:<b>'//+d.properties[question]
       //+if(d.properties[question]=='null'){'No Data Available';} else {d.properties[question];}
       +tooltip_content()+'</b>')
@@ -209,3 +241,5 @@ function hide_tooltip(d){
   // let css rules determine fill color
   d3.select(this).style("fill", function (d) { return fb_color(d.properties[question]) })
   };
+
+updateQuestion();

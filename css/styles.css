@@ -213,42 +213,103 @@ footer .nav>li>a:hover {
 }
 
 /* MANDEEPAK'S CSS*/
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.tooltipbar{ background-color:rgba(0,50,187,0.5);;
+    margin: 10px;
+    height: 50px;
+    width: 150px;
+    padding-left: 10px;
+    padding-top: 10px;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius:10px;
+}
+
+
+.rectbar {
+    fill: steelblue;
+
+}
+
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(220,220,220, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(220,220,220, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+
+
 .tagcloud {
-		left: 0px;
-		top: 0px;
+    left: 0px;
+    top: 0px;
 }
 path {
-		stroke: white;
-		stroke-width: 0.25px;
-		fill: grey;
+    stroke: white;
+    stroke-width: 0.25px;
+    fill: grey;
 }
 .states {
-		fill: #ccc;
-		stroke: #fff;
+    fill: #ccc;
+    stroke: #fff;
 }
 
 .symbol {
-		fill: steelblue;
-		fill-opacity: .8;
-		stroke: #fff;
+    fill: steelblue;
+    fill-opacity: .8;
+    stroke: #fff;
 }
 
 .tooltip{ background-color:rgba(68,136,187,0.5);;
-		margin: 10px;
-		height: 50px;
-		width: 150px;
-		padding-left: 10px;
-		padding-top: 10px;
-		-webkit-border-radius:10px;
-		-moz-border-radius:10px;
-		border-radius:10px;
+    margin: 10px;
+    height: 50px;
+    width: 150px;
+    padding-left: 10px;
+    padding-top: 10px;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius:10px;
 }
 .hoverinfo {padding: 4px; border-radius: 1px; background-color: #FFF; box-shadow: 1px 1px 5px #CCC; font-size: 12px; border: 1px solid #CCC; }
 
 div.slider {
   width: 600px; height: 20px;
         align-content: center;
-}
+
 /* NICK'S CSS*/
 #map {
 	/* mostly a copy of bootstrap's .well
@@ -319,6 +380,8 @@ div.tiptool .sep { color: #444; font-weight: 300; }
 	display: block;
 	padding: 15px 15px;
 }
+
+.top-buffer { margin-top:20px; }
 
 /*Leanne's CSS */
 
