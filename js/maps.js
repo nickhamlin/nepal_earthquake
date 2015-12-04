@@ -42,8 +42,8 @@ d3.json("data/world-110m2.json", function(error, topology) {
         //        return d.radius;
         //    })
            .style("fill", function(d) {            // <== Add these
-            if (d.country=='Nepal') {return d3.rgb('153','216','201')}  // <== Add these
-            else    { return "steelblue" }          // <== Add these
+            if (d.country=='Nepal') {return "yellow"}  // <== Add these
+            else    { return "red" }          // <== Add these
         ;})
             .call(d3.helper.tooltip()
                 .text(function(data, i){
@@ -58,37 +58,11 @@ d3.json("data/world-110m2.json", function(error, topology) {
                     //console.log(d.lat);
 
 
-            .on('mouseover', function(d, i){ d3.select(this).style("fill", function(d) {            // <== Add these
-
-                if (d.country=='Nepal') {
-
-                return d3.rgb('153','216','201');
-            }  // <== Add these
-            else
-                {
-                    return "red";
-                 }          // <== Add these
-
-
-            });
-                drawbarchart("#magnitude_bar_id",d['city']);
-
-            })
+            .on('mouseover', function(d, i){ d3.select(this).style({fill: 'skyblue'}); })
             .on('mouseout', function(d, i){ d3.select(this).style("fill", function(d) {            // <== Add these
-                drawbarchart("#magnitude_bar_id",'2015 Nepal Earthquake');
-                if (d.country=='Nepal') {
-
-                return d3.rgb('153','216','201');
-            }  // <== Add these
-            else
-                {
-                    return "steelblue";
-                 }
-
-
-
-
-        }); })
+            if (d.country=='Nepal') {return "yellow"}  // <== Add these
+            else    { return "red" }          // <== Add these
+        ;}); })
 
     });
 
@@ -242,8 +216,4 @@ function hide_tooltip(d){
   d3.select(this).style("fill", function (d) { return fb_color(d.properties[question]) })
   };
 
-<<<<<<< HEAD
 updateQuestion();
-=======
-updateQuestion();
->>>>>>> 91d462dcc6b9beca7dbbda50f140925a691d5c13
