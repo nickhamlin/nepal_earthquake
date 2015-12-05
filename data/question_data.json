@@ -8,6 +8,30 @@
 	"_3_Do_ you_have_the_information_you_need_to_get_relief_and_support? ": {
 		"text": "Do you have the information you need to get support?",
 		"image": "https://www.globalgiving.org/pfil/20336/Helpdesk_volunteers.jpg",
-		"description": "Encouragingly, citizens report that they are able to get information about how to get the assistance they need. "
+		"description": "Encouragingly, citizens generally report that they are able to get information about how to get the assistance they need, even in some of the hardest hit regions. "
+	},
+
+	"_4_Are_you_satisfied_with_what_NGOs_are_doing_for_you_after_the_earthquake? ": {
+		"text": "Are you satisfied with the work NGOs have done?",
+		"image": "https://www.globalgiving.org/pfil/20336/Team_is_is_distributing_relief_materials.JPG",
+		"description": " "
+	},
+
+	"_2_Are_you_satisfied_with_what_the_government_is_doing_for_you_after_the_earthquake_?": {
+		"text": "Are you satisfied with the work government has done?",
+		"image": "https://www.globalgiving.org/pfil/20336/GWD_5440.JPG",
+		"description": " "
+	},
+
+	"_5_Is_support_fair": {
+		"text": "Is support provided fairly?",
+		"image": "https://www.globalgiving.org/pfil/20336/End_of_day_meeting_with_volunteers.JPG",
+		"description": " "
+	},
+
+	"_8_Overall_is_the_post-earthquake_relief_effort_making_progress? ": {
+		"text": "Overall, is the relief effort making progress?",
+		"image": "https://www.globalgiving.org/pfil/20336/IMG_3687.JPG",
+		"description": " "
 	}
 }

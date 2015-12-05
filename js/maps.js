@@ -86,16 +86,9 @@ d3.json("data/world-110m2.json", function(error, topology) {
                 {
                     return "steelblue";
                  }
-
-
-
-
         }); })
 
     });
-
-
-
 
 
     g.selectAll("path")

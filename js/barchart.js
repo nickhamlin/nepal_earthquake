@@ -43,6 +43,7 @@ tooltip.append("rect")
   .attr("height", 20)
   .attr("fill", "white")
   .style("opacity", 0.5);
+
 tooltip.append("text")
   .attr("x", 0)
   .attr("dy", "1.2em")
@@ -59,19 +60,19 @@ d3.csv("data/earthquake.csv", type, function(error, data) {
   y.domain([0, d3.max(data, function(d) { return d.intensity; })]);
 
 svg_bar.append("g")
-    .attr("class", "y axis")
+    .attr("class", "y magnitude_axis")
     .call(yAxis)
   .append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", -height/2)
-    .attr("y", -margin.bottom)
+    .attr("y", -margin.left)
     .attr("dy", ".71em")
     .style("text-anchor", "end")
     .text("Intensity");
 
 // x axis and label
 svg_bar.append("g")
-    .attr("class", "x axis")
+    .attr("class", "x magnitude_axis")
     .attr("transform", "translate(0," + height + ")")
     .call(xAxis)
   .append("text")

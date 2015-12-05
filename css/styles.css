@@ -317,6 +317,19 @@ div.slider {
     height: 20px;
     align-content: center;
 }
+
+.magnitude_axis path, .magnitude_axis line {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
+.magnitude_axis text {
+  font: 10px helvetica;
+	fill: #fff;
+}
+
 /* NICK'S CSS*/
 #map {
 	/* mostly a copy of bootstrap's .well
@@ -395,9 +408,6 @@ div.tiptool .sep { color: #444; font-weight: 300; }
 /* Removed this since it conflicts with other page fonts and doesn't affect
 (as far as I can tell) Leanne's viz*/
 
-/*body {
-    font: 10px helvetica;
-} */
 
 .axis path, .axis line {
     fill: none;
@@ -498,4 +508,3 @@ path.response {
   right: 15px;
   left: auto;
 }
-
