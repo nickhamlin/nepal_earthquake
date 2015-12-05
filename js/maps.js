@@ -1,6 +1,7 @@
 // MAGNITUDE MAP ////////////////////
 
-var width = 1000,
+
+var width = 800,
     height = 500;
 
 var projection = d3.geo.mercator()
@@ -42,8 +43,8 @@ d3.json("data/world-110m2.json", function(error, topology) {
         //        return d.radius;
         //    })
            .style("fill", function(d) {            // <== Add these
-            if (d.country=='Nepal') {return "yellow"}  // <== Add these
-            else    { return "red" }          // <== Add these
+            if (d.country=='Nepal') {return d3.rgb('153','216','201')}  // <== Add these
+            else    { return "steelblue" }          // <== Add these
         ;})
             .call(d3.helper.tooltip()
                 .text(function(data, i){
@@ -58,11 +59,38 @@ d3.json("data/world-110m2.json", function(error, topology) {
                     //console.log(d.lat);
 
 
-            .on('mouseover', function(d, i){ d3.select(this).style({fill: 'skyblue'}); })
+            .on('mouseover', function(d, i){ d3.select(this).style("fill", function(d) {            // <== Add these
+
+                    console.log("!");
+                if (d.country=='Nepal') {
+
+                return d3.rgb('153','216','201');
+            }  // <== Add these
+            else
+                {
+                    return "red";
+                 }          // <== Add these
+
+
+            });
+                drawbarchart("#magnitude_bar_id",d['city']);
+
+            })
             .on('mouseout', function(d, i){ d3.select(this).style("fill", function(d) {            // <== Add these
-            if (d.country=='Nepal') {return "yellow"}  // <== Add these
-            else    { return "red" }          // <== Add these
-        ;}); })
+                drawbarchart("#magnitude_bar_id",'2015 Nepal Earthquake');
+                if (d.country=='Nepal') {
+
+                return d3.rgb('153','216','201');
+            }  // <== Add these
+            else
+                {
+                    return "steelblue";
+                 }
+
+
+
+
+        }); })
 
     });
 
@@ -92,8 +120,6 @@ d3.json("data/world-110m2.json", function(error, topology) {
 //            .attr("d", path.projection(projection));
 //    });
 //svg.call(zoom)
-
-
 
 
 // FEEDBACK MAP /////////////////////////////////////////
