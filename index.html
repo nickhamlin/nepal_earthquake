@@ -20,6 +20,7 @@
       <script src="js/topojson.v0.min.js"></script>
       <script src="js/tooltip.js"></script>
       <script src="js/d3.tip.v0.6.3.js"></script>
+      <script src="js/d3.legend.js"></script>
       <!-- Additional scripts are loaded at the bottom -->
 
   </head>
@@ -268,7 +269,7 @@
             <div class="panel-body" style="max-height: 900px;">
                <p>
                   <label for="nHeight"
-                     style="display: inline-block; width: 300px; text-align: right">
+                     style="display: inline-block; width: 500px; text-align: right">
                   Slide to change the month = 2015/<span id="nHeight-value">4</span>
                   </label>
                   <input type="range" min="4" max="10" id="nHeight">
@@ -280,13 +281,28 @@
             </div>
          </div>
       </div>
-       <div class="col-sm-3 col-sm-offset-1" style="max-height: 900px;" >
-            <div class="panel-body" style="max-height: 900px;">
-              As expected with time, the Social Media trends for Nepal Earthquake phased out
-                </div>
+
+       <div class="col-sm-3 col-sm-offset-0" style="max-height: 900px;" >
+                   <timeline_timeseries>
+                    <div class="col-sm-6 col-md-8 col-md-offset-2" id="timeline_timeseries_id">
+            <script>
+    drawtimeline('#timeline_timeseries_id');
+</script>
+
+        </div>
+
+
+        </timeline_timeseries>
+    </div>
+
+
+            <!--<div class="panel-body" style="max-height: 900px;">-->
+                <!--</div>-->
            </div>
    </div>
    </div>
+        <div class="row">
+
 </section>
 
 <section id="family">

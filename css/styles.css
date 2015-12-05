@@ -213,11 +213,17 @@ footer .nav>li>a:hover {
 }
 
 /* MANDEEPAK'S CSS*/
-.axis path,
-.axis line {
+
+
+.legend rect {
+  fill:white;
+  stroke:black;
+  opacity:0.3;}
+
+.line {
   fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
+  stroke: steelblue;
+  stroke-width: 1.5px;
 }
 
 .tooltipbar{ background-color:rgba(0,50,187,0.5);;
@@ -350,7 +356,7 @@ div.slider {
 #cities {
 	stroke-width: 0;
 }
-.city {
+.wordcounts {
 	fill: #345;
 	stroke: #fff;
 }
@@ -492,3 +498,4 @@ path.response {
   right: 15px;
   left: auto;
 }
+
