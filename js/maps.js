@@ -8,12 +8,7 @@ var projection = d3.geo.mercator()
     .center([18, 5 ])
     .scale(120)
     .rotate([-180,0])
-    //.center([86.7, 26.7])
-    // LONG, LAT, ROLL
-    //.parallels([27.6, 28.3])
     .translate([width / 2, height / 2]);
-    //.scale(7000);
-
 
 var svg = d3.select("#magnitude_id").append("svg")
     .attr("width", width)
@@ -173,7 +168,7 @@ var fb_g = fb_svg.append("g")
 
 var fb_projection = d3.geo.mercator()
   // LONG, LAT
-  .center([86.7, 26.7])
+  .center([85.5, 27.2])
   // LONG, LAT, ROLL
   //.parallels([27.6, 28.3])
   .translate([width / 2, height / 1.5])
