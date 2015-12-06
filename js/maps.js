@@ -1,17 +1,30 @@
 // MAGNITUDE MAP ////////////////////
 
 
-var width = 800,
-    height = 500;
+var width = 500,
+    height = 400;
 
 var projection = d3.geo.mercator()
-    .center([0, 5 ])
-    .scale(150)
-    .rotate([-180,0]);
+    .center([18, 5 ])
+    .scale(120)
+    .rotate([-180,0])
+    //.center([86.7, 26.7])
+    // LONG, LAT, ROLL
+    //.parallels([27.6, 28.3])
+    .translate([width / 2, height / 2]);
+    //.scale(7000);
+
 
 var svg = d3.select("#magnitude_id").append("svg")
     .attr("width", width)
     .attr("height", height);
+
+var magBorderPath = svg.append("rect")
+      .attr("height", height)
+      .attr("width", width)
+      .style("stroke", 'white')
+      .style("fill", "none")
+      .style("stroke-width", 2);
 
 var path = d3.geo.path()
     .projection(projection);

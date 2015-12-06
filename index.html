@@ -148,19 +148,17 @@
 </section>
 
 <section class="container-fluid" id="section3">
-    <h1 class="text-center">Magnitude</h1>
-    <h4  class="text-center"> The map compares the magnitude of Nepal earthquake with the top 10 earthquakes in the 20th & 21st century</h4>
-
+    <h1 class="text-center">How powerful was the quake?</h1>
     <div class="row">
-        <div class="col-sm-6 col-md-6 col-md-offset-1 col-lg-6" id="magnitude_id">
+      <div class="col-md-5 col-md-offset-1" id="magnitude_bar_id">
+        <p>Compared to other earthquakes in the pacific over the last hundred years,
+          Nepal's event was relatively weak. <p>
+        <script>
+          drawbarchart("#magnitude_bar_id",'2015 Nepal Earthquake');
+        </script>
+      </div>
+        <div class="col-md-6" id="magnitude_id">
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6 col-md-8 col-md-offset-2" id="magnitude_bar_id">
-        </div>
-            <script>
-              drawbarchart("#magnitude_bar_id",'2015 Nepal Earthquake');
-            </script>
     </div>
 </section>
 
@@ -222,7 +220,6 @@
     </div>
   </div>
 </section>
-
 
 <section class="container-fluid" id="section5">
   <h1 class="col-md-offset-1">How the World Responded</h2>
@@ -293,8 +290,17 @@
 <footer id="footer">
     <div class="container">
         <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-3 column">
+              <h4>About this Viz</h4>
+              <ul class="nav">
+                  <li><a href="#" data-toggle="modal" data-target="#goalsModal">Design Goals</a></li>
+                  <li><a href="#" data-toggle="modal" data-target="#toolsModal">Tools Used</a></li>
+                  <li><a href="#" data-toggle="modal" data-target="#testingModal">User Testing</a></li>
+                  <li><a href="#" data-toggle="modal" data-target="#sourcesModal">Data Sources</a></li>
+              </ul>
+          </div>
             <div class="col-xs-6 col-sm-6 col-md-3 column">
-                <h4>About Our Team</h4>
+                <h4>Our Team</h4>
                 <ul class="nav">
                     <li><a href="#" data-toggle="modal" data-target="#leanneModal">Leanne</a></li>
                     <li><a href="#" data-toggle="modal" data-target="#nickModal">Nick</a></li>
@@ -302,15 +308,7 @@
                     <li><a href="#" data-toggle="modal" data-target="#stephenModal">Stephen</a></li>
                 </ul>
             </div>
-            <!--div class="col-xs-6 col-md-3 column">
-                <h4>Follow Us</h4>
-                <ul class="nav">
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">LinkedIn</a></li>
-                    <li><a href="#">Github</a></li>
-                </ul>
-            </div-->
+
             <div class="col-xs-6 col-md-3 column">
                 <h4>Our Program</h4>
                 <ul class="nav">
@@ -319,15 +317,6 @@
                     <li><a href="http://www.berkeley.edu/">UC Berkeley</a></li>
                 </ul>
             </div>
-            <!--div class="col-xs-6 col-md-3 column">
-                <h4>Customer Service</h4>
-                <ul class="nav">
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Delivery Information</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms &amp; Conditions</a></li>
-                </ul>
-            </div-->
         </div>
         <!--/row-->
         <p class="text-right">©2015</p>
@@ -496,6 +485,69 @@
               <a href="https://twitter.com/stephentracy"><i class="fa fa-twitter fa-3x">&nbsp;</i></a>
               <a href="#"><i class="fa fa-facebook fa-3x">&nbsp;</i></a>
             </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<!-- Design Goals -->
+<div id="goalsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="goalsModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <!-- MODAL HEADER -->
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h2 class="text-center"><br>Design Philosophy and Goals</h2>
+          </div>
+
+          <!-- MODAL BODY -->
+          <div class="modal-body row">
+            <div class="col-md-7 col-md-offset-1 col-xs-9">
+              We'll add content here
+              </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<!-- Tools-->
+<div id="toolsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="toolsModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <!-- MODAL HEADER -->
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h2 class="text-center"><br>Visualization Tools</h2>
+          </div>
+
+          <!-- MODAL BODY -->
+          <div class="modal-body row">
+            <div class="col-md-7 col-md-offset-1 col-xs-9">
+              We'll add content here
+              </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<!-- User testing -->
+<div id="testingModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="testingModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <!-- MODAL HEADER -->
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h2 class="text-center"><br>User Testing</h2>
+          </div>
+
+          <!-- MODAL BODY -->
+          <div class="modal-body row">
+            <div class="col-md-7 col-md-offset-1 col-xs-9">
+              We'll add content here
+              </div>
           </div>
         </div>
       </div>

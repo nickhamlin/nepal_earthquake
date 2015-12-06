@@ -6,7 +6,7 @@ var drawbarchart=function(content,selectedcity){
     console.log("inside");
 
 var margin = {top: 40, right: 50, bottom: 30, left:0};
-var width = 600 - margin.left - margin.right;
+var width = 500 - margin.left - margin.right;
 var label_offset=150;
 var chart_width=width-label_offset //150 is the padding to make room for the y axis labels
 var height = 300 - margin.top - margin.bottom;
@@ -22,8 +22,6 @@ var tip = d3.tip()
 var svg_bar = d3.select(content).append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
-    //.append("g")
-    //.attr("transform", "translate(" + margin.top + "," + margin.left + ")");
 
 svg_bar.call(tip);
 
@@ -43,8 +41,6 @@ tooltip.append("text")
   .style("text-anchor", "right")
   .attr("font-size", "12px")
   .attr("font-weight", "bold");
-
-
 
 
 d3.csv("data/earthquake.csv", type,
