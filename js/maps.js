@@ -160,7 +160,7 @@ var fb_g = fb_svg.append("g")
 
 var fb_projection = d3.geo.mercator()
   // LONG, LAT
-  .center([87.5, 26.7])
+  .center([86.7, 26.7])
   // LONG, LAT, ROLL
   //.parallels([27.6, 28.3])
   .translate([width / 2, height / 1.5])
@@ -169,9 +169,11 @@ var fb_projection = d3.geo.mercator()
 var fb_path = d3.geo.path()
   .projection(fb_projection);
 
+var slices=[.02, 1,2, 3,4,5];
+
 // These thresholds are manually defined to make the data look good
 var fb_color = d3.scale.threshold()
-  .domain([.02, 1,2, 3,4,5])
+  .domain(slices)
   .range(["#000000", "#dadaeb", "#bcbddc", "#9e9ac8", "#756bb1", "#54278f"]);
 
 d3.json("data/feedback_map_v2.geojson", function(shape) {
@@ -236,3 +238,33 @@ function hide_tooltip(d){
   };
 
 updateQuestion();
+
+
+    // add legend
+  	var legend = fb_svg.append("g")
+  	  .attr("class", "legend")
+  	  .attr("x", fb_width - 65)
+  	  .attr("y", 25)
+  	  .attr("height", 100)
+  	  .attr("width", 100);
+
+  	legend.selectAll('g').data(slices)
+        .enter()
+        .append('g')
+        .each(function(d, i) {
+          var g = d3.select(this);
+          g.append("rect")
+            .attr("x", fb_width - 65)
+            .attr("y", i*25)
+            .attr("width", 10)
+            .attr("height", 10)
+            .style("fill", "blue");
+
+          g.append("text")
+            .attr("x", w - 50)
+            .attr("y", i * 25 + 8)
+            .attr("height",30)
+            .attr("width",100)
+            .style("fill", "green")
+            .text("poop");
+          })

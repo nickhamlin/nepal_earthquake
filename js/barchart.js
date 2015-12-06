@@ -5,19 +5,12 @@ var drawbarchart=function(content,selectedcity){
 
     console.log("inside");
 
-var margin = {top: 40, right: 0, bottom: 30, left: 0},
-    width = 800 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
-var x = d3.scale.ordinal()
-    .rangeRoundBands([0, width], .1);
-var y = d3.scale.linear()
-    .range([height, 0]);
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom");
-var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left");
+var margin = {top: 40, right: 50, bottom: 30, left:0};
+var width = 600 - margin.left - margin.right;
+var label_offset=150;
+var chart_width=width-label_offset //150 is the padding to make room for the y axis labels
+var height = 300 - margin.top - margin.bottom;
+
 var tip = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
@@ -29,8 +22,8 @@ var tip = d3.tip()
 var svg_bar = d3.select(content).append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    //.append("g")
+    //.attr("transform", "translate(" + margin.top + "," + margin.left + ")");
 
 svg_bar.call(tip);
 
@@ -54,43 +47,53 @@ tooltip.append("text")
 
 
 
-d3.csv("data/earthquake.csv", type, function(error, data) {
-  x.domain(data.map(function(d) {
-    return d.city; }));
-  y.domain([0, d3.max(data, function(d) { return d.intensity; })]);
+d3.csv("data/earthquake.csv", type,
+function(error, data) {
 
+  var x = d3.scale.linear()
+      .domain([0,d3.max(data, function(d) { return d.intensity; })])
+      .range([0, chart_width]);
+
+  var y = d3.scale.ordinal()
+      .domain(data.map(function(d) {return d.city; }))
+      .rangeRoundBands([0, height], .1);
+
+  var xAxis = d3.svg.axis()
+      .scale(x)
+      .orient("bottom");
+
+  var yAxis = d3.svg.axis()
+      .scale(y)
+      .orient("left");
+
+// y axis and label
 svg_bar.append("g")
     .attr("class", "y magnitude_axis")
     .call(yAxis)
-  .append("text")
-    .attr("transform", "rotate(-90)")
-    .attr("x", -height/2)
-    .attr("y", -margin.left)
-    .attr("dy", ".71em")
-    .style("text-anchor", "end")
-    .text("Intensity");
+    .attr("transform", "translate("+label_offset+"," + 0 + ")");
 
 // x axis and label
 svg_bar.append("g")
     .attr("class", "x magnitude_axis")
-    .attr("transform", "translate(0," + height + ")")
     .call(xAxis)
-  .append("text")
-    .attr("x", width / 2)
+    .attr("transform", "translate("+label_offset+"," + height + ")")
+    .append("text")
+    .attr("x", chart_width / 2)
     .attr("y", margin.bottom - 10)
     .attr("dy", ".71em")
     .style("text-anchor", "end")
-    .text("XAxis");
+    .text("Richter Scale Intensity");
 
+// Add bars
   svg_bar.selectAll(".rectbar")
       .data(data)
-    .enter().append("rect")
+      .enter()
+      .append("rect")
       .attr("class", "rectbar")
-      .attr("x", function(d) {
-          return x(d.city); })
-      .attr("width", 30)
-      .attr("y", function(d) { return y(d.intensity); })
-      .attr("height", function(d) { return height - y(d.intensity); })
+      .attr("x",150)
+      .attr("y", function(d) {return y(d.city); })
+      .attr("width", function(d) { return x(d.intensity); })
+      .attr("height", 20)
       .style("fill", function(d) {
           if(d['city']==selectedcity && selectedcity!='2015 Nepal Earthquake')
         {
@@ -126,11 +129,11 @@ svg_bar.append("g")
 
 });
 
-function type(d) {
-  d.frequency = +d.intensity;
-  return d;
-}
+  function type(d) {
+    d.frequency = +d.intensity;
+    return d;
+  };
 
 
 
-}
+};// end of top-level function
