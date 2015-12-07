@@ -90,6 +90,7 @@ svg_bar.append("g")
       .attr("y", function(d) {return y(d.city); })
       .attr("width", function(d) { return x(d.intensity); })
       .attr("height", 20)
+      .attr("id",function(d){return d.id+"bar";})
       .style("fill", function(d) {
           if(d['city']==selectedcity && selectedcity!='2015 Nepal Earthquake')
         {
@@ -106,21 +107,22 @@ svg_bar.append("g")
 
 
       })
-    //.on("mouseover", function() {
-    //    console.log("over");
-    //    tooltip.style("display", null); })
-    //  .on("mouseout", function() {
-    //      console.log("out");
-    //      tooltip.style("display", "none"); })
-    //  .on("mousemove", function(d) {
-    //      console.log("move");
-    //    var xPosition = d3.mouse(this)[0] - 15;
-    //    var yPosition = d3.mouse(this)[1] - 25;
-    //    tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
-    //    tooltip.select("text").text(d.city+"-"+d.intensity);
-    //  });
-      .on('mouseover', tip.show)
-      .on('mouseout', tip.hide)
+      //.on('mouseover', tip.show)
+      //.on('mouseout', tip.hide)
+      .on('mouseover', function (d){
+          var id=d.id;
+          console.log(id);
+          d3.select("#"+id+"circle").style("fill","red")
+          d3.select(this).style("fill","red")
+        })
+
+      .on('mouseout', function (d){
+          var id=d.id;
+          var color= function(d) {if (id=='e10circle') {return d3.rgb('153','216','201')}
+           else { return "steelblue" } };
+          d3.select("#"+id+"circle").style("fill", color);
+          d3.select(this).style("fill", color);
+        });
 
 
 });

@@ -47,13 +47,14 @@ d3.json("data/world-110m2.json", function(error, topology) {
             .attr('r', function(d){
                 return d.radius
             })
+            .attr("id",function(d){return d.id+"circle";})
         //function(d) {
         //        return d.radius;
         //    })
            .style("fill", function(d) {            // <== Add these
             if (d.country=='Nepal') {return d3.rgb('153','216','201')}  // <== Add these
-            else    { return "steelblue" }          // <== Add these
-        ;})
+            else { return "steelblue" }          // <== Add these
+              ;})
             .call(d3.helper.tooltip()
                 .text(function(data, i){
                     return ['<div class="hoverinfo">' +  data.city,
@@ -63,40 +64,36 @@ d3.json("data/world-110m2.json", function(error, topology) {
                         '</div>'].join('');
 
                 }))
-                    //console.log(d.city);
-                    //console.log(d.lat);
 
-
-            .on('mouseover', function(d, i){ d3.select(this).style("fill", function(d) {            // <== Add these
-
-                    console.log("!");
-                if (d.country=='Nepal') {
-
-                return d3.rgb('153','216','201');
-            }  // <== Add these
-            else
-                {
-                    return "red";
-                 }          // <== Add these
-
-
-            });
-                drawbarchart("#magnitude_bar_id",d['city']);
-
+            .on('mouseover', function(d, i){
+              var id=d.id;
+              var color= "red"
+              d3.select("#"+id+"bar").style("fill", color);
+              d3.select(this).style("fill", color);
             })
-            .on('mouseout', function(d, i){ d3.select(this).style("fill", function(d) {            // <== Add these
+
+              /*
+              d3.select(this).style("fill", function(d) {            // <== Add these
+                if (d.country=='Nepal') {return d3.rgb('153','216','201');}  // <== Add these
+                else {return "red";}          // <== Add these
+                  });
+                drawbarchart("#magnitude_bar_id",d['city']);
+                })
+                */
+
+            .on('mouseout', function(d, i){
+              var id=d.id;
+              var color= function(d) {if (id=='e10circle') {return d3.rgb('153','216','201')}
+               else { return "steelblue" } };
+              d3.select("#"+id+"bar").style("fill", color);
+              d3.select(this).style("fill", color);
+              /*d3.select(this).style("fill", function(d) {            // <== Add these
                 drawbarchart("#magnitude_bar_id",'2015 Nepal Earthquake');
-                if (d.country=='Nepal') {
-
-                return d3.rgb('153','216','201');
-            }  // <== Add these
-            else
-                {
-                    return "steelblue";
-                 }
-        }); })
-
-    });
+                if (d.country=='Nepal') {return d3.rgb('153','216','201');}  // <== Add these
+                else {return "steelblue";}
+              });*/
+                })
+            });
 
 
     g.selectAll("path")
