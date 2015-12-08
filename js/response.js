@@ -10,7 +10,7 @@ var margin = {
 
 // Our X scale
 var x = d3.scale.ordinal()
-    .rangeRoundBands([0, width], .2); //had to expand padding to get lines to show up
+    .rangeRoundBands([0, width], .001); //had to expand padding to get lines to show up
 
 // Our Y scale
 var y = d3.scale.linear()
@@ -23,9 +23,10 @@ var color = d3.scale.ordinal()
 // Use our X scale to set a bottom axis
 var xAxis = d3.svg.axis()
     .scale(x)
-    .orient("bottom");
+    .orient("bottom")
+    .tickSize(0);
 
-// Smae for our left axis
+// Same for our left axis
 var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left")
@@ -102,6 +103,7 @@ d3.csv("data/NepalTotalFundingMatrixPos.csv", function (data) {
         .attr("y", 6)
         .attr("dy", ".71em")
         .style("text-anchor", "end")
+        .style("font", "12px helvetica")
         .text("Cumulative Aid Distributed (USD)");
 
     var year = svg.selectAll(".year")
@@ -126,7 +128,8 @@ d3.csv("data/NepalTotalFundingMatrixPos.csv", function (data) {
         })
         .style("fill", function (d) {
         return color(d.name);
-        });
+        })
+        .style("opacity", 0.3);
 
 
     var valueline = d3.svg.line()
@@ -134,20 +137,46 @@ d3.csv("data/NepalTotalFundingMatrixPos.csv", function (data) {
         .y(function(d) { return y(d.TotalFunding); });
 
 
+    var valuelineDist = d3.svg.line()
+        .x(function(d) { return x(d.year); })
+        .y(function(d) { return y(d.Cash + d.Labor + d.MedicalAid + d.NonFoodItems + d.Shelter); });
+
+
+
     lineSvg.append("path")      // Add the valueline path.
         .attr("class", "line")
         .attr("class", "response") //added to avoid path style conflicts
         .style("stroke", "#3B3B3B")
+        .style("stroke-width", 3)
         .attr("d", valueline(data));
 
 
     lineSvg.append("text")
-        .attr("transform", "translate(" + (width-125) + "," + (y(data[121].TotalFunding)-10) + ")")
+        .attr("transform", "translate(" + (width-145) + "," + (y(data[121].TotalFunding)-12) + ")")
         .attr("dy", ".5em")
         .attr("text-anchor", "start")
         .style("fill", "#3B3B3B")
-        .style("font", "11px helvetica")
-        .text("Total Funding Pledged");
+        .style("font", "14px georgia")
+        .style("font-weight", "bold")
+        .text("Total Aid Pledged");
+
+
+    lineSvg.append("path")      // Add the Aid Distributed value line path.
+        .attr("class", "line")
+        .attr("class", "response") //added to avoid path style conflicts
+        .style("stroke", "#3B3B3B")
+        .style("stroke-width", 3)
+        .attr("d", valuelineDist(data));
+
+
+    lineSvg.append("text")
+        .attr("transform", "translate(" + (width-170) + "," + (y(data[121].Cash + data[121].Labor + data[121].MedicalAid + data[121].NonFoodItems + data[121].Shelter)-12) + ")")
+        .attr("dy", ".5em")
+        .attr("text-anchor", "start")
+        .style("fill", "#3B3B3B")
+        .style("font", "14px georgia")
+        .style("font-weight", "bold")
+        .text("Total Aid Distributed");
 
 
     var legend = svg.selectAll(".legend")
@@ -187,7 +216,7 @@ d3.csv("data/NepalTotalFundingMatrixPos.csv", function (data) {
         .attr("class", "y")
         .style("stroke", "#3B3B3B")
         .style("stroke-dasharray", "3,3")
-        .style("opacity", 0.5)
+        .style("opacity", 0)
         .attr("x1", width)
         .attr("x2", width);
 
@@ -198,13 +227,20 @@ d3.csv("data/NepalTotalFundingMatrixPos.csv", function (data) {
         .style("stroke", "#3B3B3B")
         .attr("r", 4);
 
+    // append second circle at distribution intersection
+    focus.append("circle")
+        .attr("class", "y1")
+        .style("fill", "none")
+        .style("stroke", "#3B3B3B")
+        .attr("r", 4);
+
 
     // place the date at the intersection
     focus.append("text")
         .attr("class", "y4")
         .attr("dx", 8)
-        .attr("dy", "1em")
-        .style("font", "11px georgia")
+        .attr("dy", "1.2em")
+        .style("font", "14px georgia")
         .style("font-weight", "bold")
         .style("fill", "#202020");
 
@@ -213,23 +249,24 @@ d3.csv("data/NepalTotalFundingMatrixPos.csv", function (data) {
         .attr("class", "y2")
         .attr("dx", 8)
         .attr("dy", "2.3em")
-        .style("font", "11px georgia")
+        .style("font", "14px georgia")
+        .style("font-weight", "bold")
         .style("fill", "#202020");
 
     // place the Cash value at the intersection
     focus.append("text")
         .attr("class", "y6")
         .attr("dx", 8)
-        .attr("dy", "3.6em")
-        .style("font", "11px georgia")
+        .attr("dy", "3.9em")
+        .style("font", "12px georgia")
         .style("fill", "#202020");
 
     // place the Labor value at the intersection
     focus.append("text")
         .attr("class", "y8")
         .attr("dx", 8)
-        .attr("dy", "4.9em")
-        .style("font", "11px georgia")
+        .attr("dy", "5.1em")
+        .style("font", "12px georgia")
         .style("fill", "#202020");
 
     // place the Medical Aid value at the intersection
@@ -237,7 +274,7 @@ d3.csv("data/NepalTotalFundingMatrixPos.csv", function (data) {
         .attr("class", "y10")
         .attr("dx", 8)
         .attr("dy", "6.2em")
-        .style("font", "11px georgia")
+        .style("font", "12px georgia")
         .style("fill", "#202020");
 
     // place the Non Food Items value at the intersection
@@ -245,7 +282,7 @@ d3.csv("data/NepalTotalFundingMatrixPos.csv", function (data) {
         .attr("class", "y12")
         .attr("dx", 8)
         .attr("dy", "7.5em")
-        .style("font", "11px georgia")
+        .style("font", "12px georgia")
         .style("fill", "#202020");
 
     // place the Shelter value at the intersection
@@ -253,7 +290,7 @@ d3.csv("data/NepalTotalFundingMatrixPos.csv", function (data) {
         .attr("class", "y14")
         .attr("dx", 8)
         .attr("dy", "8.8em")
-        .style("font", "11px georgia")
+        .style("font", "12px georgia")
         .style("fill", "#202020");
 
 
@@ -282,12 +319,11 @@ d3.csv("data/NepalTotalFundingMatrixPos.csv", function (data) {
                   "translate(" + x(d.year) + "," +
                                  y(d.TotalFunding) + ")");
 
-     
-        focus.select("text.y2")
+
+        focus.select("circle.y1")
             .attr("transform",
                   "translate(" + x(d.year) + "," +
-                                 y(d.TotalFunding) + ")")
-            .text("Total Funding: $" + Math.round(d.TotalFunding/1000000) + " M");
+                                 y(d.Cash + d.Labor + d.MedicalAid + d.NonFoodItems + d.Shelter) + ")");
 
    
         focus.select("text.y4")
@@ -295,9 +331,29 @@ d3.csv("data/NepalTotalFundingMatrixPos.csv", function (data) {
                   "translate(" + x(d.year) + "," +
                                  y(d.TotalFunding) + ")")
             .text("Date: " + d.year);
+   
 
-    
+        focus.select("text.y2")
+            .attr("transform",
+                  "translate(" + x(d.year) + "," +
+                                 y(d.TotalFunding) + ")")
+            .text("Distribution Gap: $" + (Math.round(d.TotalFunding/1000000) - Math.round((d.Cash + d.Labor + d.MedicalAid + d.NonFoodItems + d.Shelter)/1000000)) + " M");
+
+     
         focus.select("text.y6")
+            .attr("transform",
+                  "translate(" + x(d.year) + "," +
+                                 y(d.TotalFunding) + ")")
+            .text("Total Aid Pledged: $" + Math.round(d.TotalFunding/1000000) + " M");
+
+        focus.select("text.y8")
+            .attr("transform",
+                  "translate(" + x(d.year) + "," +
+                                 y(d.TotalFunding) + ")")
+            .text("Total Aid Distributed: $" + Math.round((d.Cash + d.Labor + d.MedicalAid + d.NonFoodItems + d.Shelter)/1000000) + " M");
+ 
+
+ /*       focus.select("text.y6")
             .attr("transform",
                   "translate(" + x(d.year) + "," +
                                  y(d.TotalFunding) + ")")
@@ -329,19 +385,19 @@ d3.csv("data/NepalTotalFundingMatrixPos.csv", function (data) {
             .attr("transform",
                   "translate(" + x(d.year) + "," +
                                  y(d.TotalFunding) + ")")
-            .text("Shelter Aid: $" + Math.round(d.Shelter/100000)/10 + " M");
+            .text("Shelter Aid: $" + Math.round(d.Shelter/100000)/10 + " M");  */
 
         focus.select(".x")
             .attr("transform",
                   "translate(" + x(d.year) + "," +
                                  y(d.TotalFunding) + ")")
-                       .attr("y2", height - y(d.TotalFunding));
+                       .attr("y2", height - y(d.TotalFunding - (d.Cash + d.Labor + d.MedicalAid + d.NonFoodItems + d.Shelter)));
 
         focus.select(".y")
             .attr("transform",
                   "translate(" + width * -1 + "," +
                                  y(d.TotalFunding) + ")")
-                       .attr("x2", width + width);
+                       .attr("x2", width + width); 
     }
 
 });
