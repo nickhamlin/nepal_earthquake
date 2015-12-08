@@ -140,7 +140,7 @@ section {
     }
 }
 
-#section1, {
+#section1 {
 	background-color: rgba(0,0,0,0.7);
 	color:#fff;
 	font-family: 'Bitter', serif;
@@ -225,6 +225,57 @@ footer .nav>li>a:hover {
 
 /* MANDEEPAK'S CSS*/
 
+.axis path,
+.axis line,
+.axis1 path,
+.axis1 line {
+  fill: none;
+  stroke: #E6E7E8;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path, .x.axis1 path {
+  display: none;
+}
+
+.line {
+  fill: none;
+  stroke-width: 1.5px;
+}
+
+.legend-box {
+  cursor: pointer;
+}
+
+#mouse-tracker {
+  stroke: #E6E7E8;
+  stroke-width: 1px;
+}
+
+.hover-line {
+  stroke: #E6E7E8;
+  fill: none;
+  stroke-width: 1px;
+  left: 10px;
+  shape-rendering: crispEdges;
+  opacity: 1e-6;
+}
+
+.hover-text {
+  stroke: none;
+  font-size: 30px;
+  font-weight: bold;
+  fill: #000000;
+}
+
+.tooltip {
+  font-weight: normal;
+}
+
+.brush .extent {
+  stroke: #FFF;
+  shape-rendering: crispEdges;
+}
 
 .legend rect {
   fill:white;
@@ -240,7 +291,7 @@ footer .nav>li>a:hover {
 .tooltipbar{ background-color:rgba(0,50,187,0.5);;
     margin: 10px;
     height: 50px;
-    width: 50px;
+    width: 150px;
     padding-left: 10px;
     padding-top: 10px;
     -webkit-border-radius:10px;
@@ -314,22 +365,14 @@ path {
 .tooltip{ background-color:rgba(68,136,187,0.5);;
     margin: 10px;
     height: 50px;
-    width: 50px;
+    width: 150px;
     padding-left: 10px;
     padding-top: 10px;
     -webkit-border-radius:10px;
     -moz-border-radius:10px;
     border-radius:10px;
 }
-
-.hoverinfo {
-	padding: 4px;
-	border-radius: 1px;
-	background-color: #FFF;
-	box-shadow: 1px 1px 5px #CCC;
-	font-size: 12px;
-	border: 1px solid #CCC;
-}
+.hoverinfo {padding: 4px; border-radius: 1px; background-color: #FFF; box-shadow: 1px 1px 5px #CCC; font-size: 12px; border: 1px solid #CCC; }
 
 div.slider {
     width: 600px;
@@ -347,6 +390,18 @@ div.slider {
 .magnitude_axis text {
   font: 10px helvetica;
 	fill: #fff;
+}
+
+.timeline_axis path, .timeline_axis line {
+    fill: none;
+    stroke: black;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
+.timeline_axis text {
+  font: 10px helvetica;
+	fill: black;
 }
 
 /* NICK'S CSS*/
