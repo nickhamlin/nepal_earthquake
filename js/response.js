@@ -1,12 +1,13 @@
 // Set our margins
 var margin = {
     top: 20,
-    right: 170,
-    bottom: 50,
-    left: 40
+    right: 140,
+    bottom: 70,
+    left: 145
     },
-    width = 1100 - margin.left - margin.right, //we may want to play with the size on this later
-    height = 600 - margin.top - margin.bottom;
+    width = 960,
+    height = 500,
+    centered;
 
 // Our X scale
 var x = d3.scale.ordinal()
@@ -18,7 +19,7 @@ var y = d3.scale.linear()
 
 // Our color bands
 var color = d3.scale.ordinal()
-    .range([ "#99C68E", "#C77E36", "#EAEAEA", "#43BFC7", "#357EC7"]);
+    .range([ "#99C68E", "#C77E36", "Red", "#43BFC7", "#357EC7"]);
 
 // Use our X scale to set a bottom axis
 var xAxis = d3.svg.axis()
@@ -152,7 +153,7 @@ d3.csv("data/NepalTotalFundingMatrixPos.csv", function (data) {
 
 
     lineSvg.append("text")
-        .attr("transform", "translate(" + (width-145) + "," + (y(data[121].TotalFunding)-12) + ")")
+        .attr("transform", "translate(" + (width-160) + "," + (y(data[121].TotalFunding)-12) + ")")
         .attr("dy", ".5em")
         .attr("text-anchor", "start")
         .style("fill", "#3B3B3B")
@@ -170,7 +171,7 @@ d3.csv("data/NepalTotalFundingMatrixPos.csv", function (data) {
 
 
     lineSvg.append("text")
-        .attr("transform", "translate(" + (width-170) + "," + (y(data[121].Cash + data[121].Labor + data[121].MedicalAid + data[121].NonFoodItems + data[121].Shelter)-12) + ")")
+        .attr("transform", "translate(" + (width-185) + "," + (y(data[121].Cash + data[121].Labor + data[121].MedicalAid + data[121].NonFoodItems + data[121].Shelter)-12) + ")")
         .attr("dy", ".5em")
         .attr("text-anchor", "start")
         .style("fill", "#3B3B3B")
