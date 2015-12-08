@@ -48,22 +48,19 @@ d3.json("data/world-110m2.json", function(error, topology) {
                 return d.radius
             })
             .attr("id",function(d){return d.id+"circle";})
-        //function(d) {
-        //        return d.radius;
-        //    })
            .style("fill", function(d) {            // <== Add these
             if (d.country=='Nepal') {return d3.rgb('153','216','201')}  // <== Add these
             else { return "steelblue" }          // <== Add these
               ;})
+
             .call(d3.helper.tooltip()
+                .attr("class","tooltip")
                 .text(function(data, i){
                     return ['<div class="hoverinfo">' +  data.city,
                         '<br/>Magnitude: ' +  data.intensity + ' Richter',
                         '<br/>Country: ' +  data.country + '',
                         '<br/>Date: ' +  data.date + '',
-                        '</div>'].join('');
-
-                }))
+                        '</div>'].join('');}))
 
             .on('mouseover', function(d, i){
               var id=d.id;
@@ -72,26 +69,13 @@ d3.json("data/world-110m2.json", function(error, topology) {
               d3.select(this).style("fill", color);
             })
 
-              /*
-              d3.select(this).style("fill", function(d) {            // <== Add these
-                if (d.country=='Nepal') {return d3.rgb('153','216','201');}  // <== Add these
-                else {return "red";}          // <== Add these
-                  });
-                drawbarchart("#magnitude_bar_id",d['city']);
-                })
-                */
-
             .on('mouseout', function(d, i){
               var id=d.id;
               var color= function(d) {if (id=='e10circle') {return d3.rgb('153','216','201')}
                else { return "steelblue" } };
               d3.select("#"+id+"bar").style("fill", color);
               d3.select(this).style("fill", color);
-              /*d3.select(this).style("fill", function(d) {            // <== Add these
-                drawbarchart("#magnitude_bar_id",'2015 Nepal Earthquake');
-                if (d.country=='Nepal') {return d3.rgb('153','216','201');}  // <== Add these
-                else {return "steelblue";}
-              });*/
+
                 })
             });
 
@@ -103,21 +87,6 @@ d3.json("data/world-110m2.json", function(error, topology) {
         .append("path")
         .attr("d", path)
 });
-
-
-
-
-// zoom and pan
-//var zoom = d3.behavior.zoom()
-//    .on("zoom",function() {
-//        g.attr("transform","translate("+
-//            d3.event.translate.join(",")+")scale("+d3.event.scale+")");
-//        g.selectAll("circle")
-//            .attr("d", path.projection(projection));
-//        g.selectAll("path")
-//            .attr("d", path.projection(projection));
-//    });
-//svg.call(zoom)
 
 
 // FEEDBACK MAP /////////////////////////////////////////
@@ -134,7 +103,6 @@ d3.json("data/question_data.json", function(json) {
 
 function updateQuestion() {
   question = document.querySelector('option:checked').value;
-  //question_text= document.querySelector('option:checked').text;
   document.getElementById("question-title").innerText = question_data[question]["text"];
   document.getElementById("question-desc").innerText = question_data[question]["description"];
   document.getElementById("question-image").src = question_data[question]["image"];

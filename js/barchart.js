@@ -10,7 +10,7 @@ var width = 500 - margin.left - margin.right;
 var label_offset=150;
 var chart_width=width-label_offset //150 is the padding to make room for the y axis labels
 var height = 300 - margin.top - margin.bottom;
-
+/*
 var tip = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
@@ -18,12 +18,12 @@ var tip = d3.tip()
     return "<span>"+d.city + ":</span>"+
         "<span style='color:red'>" + d.intensity + "</span>";
   })
-
+*/
 var svg_bar = d3.select(content).append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
 
-svg_bar.call(tip);
+/*svg_bar.call(tip);
 
 var tooltip = svg_bar.append("g")
   .attr("class", "tooltipbar")
@@ -41,9 +41,9 @@ tooltip.append("text")
   .style("text-anchor", "right")
   .attr("font-size", "12px")
   .attr("font-weight", "bold");
+*/
 
-
-d3.csv("data/earthquake.csv", type,
+d3.csv("data/cities.csv", type,
 function(error, data) {
 
   var x = d3.scale.linear()
@@ -104,14 +104,18 @@ svg_bar.append("g")
               {
                   return 'steelblue';
               }
-
-
       })
-      //.on('mouseover', tip.show)
-      //.on('mouseout', tip.hide)
+      .call(d3.helper.tooltip()
+          .attr("class","tooltip")
+          .text(function(data, i){
+              return ['<div class="hoverinfo">' +  data.city,
+                  '<br/>Magnitude: ' +  data.intensity + ' Richter',
+                  '<br/>Country: ' +  data.country + '',
+                  '<br/>Date: ' +  data.date + '',
+                  '</div>'].join('');}))
+
       .on('mouseover', function (d){
           var id=d.id;
-          console.log(id);
           d3.select("#"+id+"circle").style("fill","red")
           d3.select(this).style("fill","red")
         })
@@ -123,8 +127,6 @@ svg_bar.append("g")
           d3.select("#"+id+"circle").style("fill", color);
           d3.select(this).style("fill", color);
         });
-
-
 });
 
   function type(d) {
