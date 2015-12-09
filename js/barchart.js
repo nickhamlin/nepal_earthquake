@@ -121,10 +121,10 @@ svg_bar.append("g")
         })
 
       .on('mouseout', function (d){
-          var id=d.id;
+          var id=d.id+"circle";
           var color= function(d) {if (id=='e10circle') {return d3.rgb('153','216','201')}
            else { return "steelblue" } };
-          d3.select("#"+id+"circle").style("fill", color);
+          d3.select("#"+id).style("fill", color);
           d3.select(this).style("fill", color);
         });
 });

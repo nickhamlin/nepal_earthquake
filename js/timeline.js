@@ -5,7 +5,7 @@ function wordCloud(selector) {
 
     //Construct the word cloud's SVG element
     var svg = d3.select(selector).append("svg")
-        .attr("width", 500)
+        .attr("width", 400)
         .attr("height", 400)
         .append("g").attr("class","tagcloud")
         .attr("transform", "translate(250,250)");
@@ -283,9 +283,9 @@ var margin = {top: 15, right: 75, bottom: 50, left: 20},
 //        height = 480 - margin.top - margin.bottom;
 //        height2 = 500 - margin2.top - margin2.bottom;
 
-    width = 600 - margin.left - margin.right,
-    height = 550 - margin.top - margin.bottom,
-    height2 = 300 - margin2.top - margin2.bottom;
+    width = 450 - margin.left - margin.right,
+    height = 525 - margin.top - margin.bottom,
+    height2 = 275 - margin2.top - margin2.bottom;
 
 var parseDate = d3.time.format("%Y%m%d").parse;
 var bisectDate = d3.bisector(function(d) { return d.date; }).left;

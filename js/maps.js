@@ -211,33 +211,3 @@ function hide_tooltip(d){
   };
 
 updateQuestion();
-
-
-    // add legend
-  	var legend = fb_svg.append("g")
-  	  .attr("class", "legend")
-  	  .attr("x", fb_width - 65)
-  	  .attr("y", 25)
-  	  .attr("height", 100)
-  	  .attr("width", 100);
-
-  	legend.selectAll('g').data(slices)
-        .enter()
-        .append('g')
-        .each(function(d, i) {
-          var g = d3.select(this);
-          g.append("rect")
-            .attr("x", fb_width - 65)
-            .attr("y", i*25)
-            .attr("width", 10)
-            .attr("height", 10)
-            .style("fill", "blue");
-
-          g.append("text")
-            .attr("x", w - 50)
-            .attr("y", i * 25 + 8)
-            .attr("height",30)
-            .attr("width",100)
-            .style("fill", "green")
-            .text("poop");
-          })

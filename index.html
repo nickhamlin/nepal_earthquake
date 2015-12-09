@@ -152,7 +152,8 @@
     <div class="row">
       <div class="col-md-5 col-md-offset-1" id="magnitude_bar_id">
         <p>Compared to other earthquakes in the pacific over the last hundred years,
-          Nepal's event was relatively weak. <p>
+          Nepal's event was relatively weak. Hover over the dots and bars to
+          learn more and see where these stronger quakes occurred.<p>
         <script>
           drawbarchart("#magnitude_bar_id",'2015 Nepal Earthquake');
         </script>
@@ -162,15 +163,29 @@
     </div>
 </section>
 
-<section id="section4" style=" min-height:950px !important;">
+<section id="section4" style=" min-height:750px !important;">
    <h1 class="text-center">Social Media Response</h1>
    <div class="row">
-      <div class="col-md-5 col-md-offset-0" style="max-height: 900px;" >
+     <div class="col-md-8 col-md-offset-2">
+       <p>Despite an initial wave of support immediately after the diaster,
+         social media interest in the earthquake quickly dried up within a few
+         months.  The chart on the left shows how rapidly users stopped tweeting
+         certain keywords related to the event.  Use the choices on the right
+         to show/hide the curves for specific words, and use the word cloud on
+         the left to explore how other keywords associated with the quake changed
+         over time.
+         <p>
+         </div>
+    </div>
+
+   <div class="row">
+
+      <div class="col-md-5 col-md-offset-1" style="max-height: 700px;" >
          <div class="panel panel-default slideInLeft animate">
             <div class="panel-body" >
                <p>
                   <label for="nHeight"
-                     style="display: inline-block; width: 300px; text-align: right">
+                     style="display: inline-block; width: 400px; text-align: right">
                   Slide to change the month = 2015/<span id="nHeight-value">4</span>
                   </label>
                   <input type="range" min="4" max="10" id="nHeight">
@@ -183,27 +198,17 @@
          </div>
       </div>
 
-       <div class="col-md-6" style="max-height: 900px;" >
-                   <timeline_timeseries>
-                    <div class="col-sm-6 col-md-8 col-md-offset-2" id="timeline_timeseries_id">
-            <script>
-    drawtimeline('#timeline_timeseries_id');
-</script>
-
+       <div class="col-md-6" style="max-height: 900px;">
+          <timeline_timeseries>
+            <div class="col-sm-6 col-md-6 col-md-offset-0" id="timeline_timeseries_id">
+                <script>
+                  drawtimeline('#timeline_timeseries_id');
+                  </script>
+            </div>
+          </timeline_timeseries>
         </div>
 
-
-        </timeline_timeseries>
-    </div>
-
-
-            <!--<div class="panel-body" style="max-height: 900px;">-->
-                <!--</div>-->
-           </div>
-   </div>
-   </div>
-        <div class="row">
-
+  </div>
 </section>
 
 <section class="container-fluid quote" id="family">
@@ -224,7 +229,7 @@
 <section class="container-fluid" id="section5">
   <h1 class="col-md-offset-1">How the World Responded</h2>
     <div class="row">
-        <div class="col-sm-6 col-md-6 col-sm-offset-1 col-md-offset-1">
+        <div class="col-sm-6 col-md-6 col-sm-offset-0 col-md-offset-0">
             <response>
             </response>
         </div>
