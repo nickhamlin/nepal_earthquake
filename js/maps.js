@@ -149,6 +149,76 @@ var fb_color = d3.scale.threshold()
   .domain(slices)
   .range(["#000000", "#dadaeb", "#bcbddc", "#9e9ac8", "#756bb1", "#54278f"]);
 
+
+
+  var legendData=
+  [
+    {"x": "1","y": "0","label":"Not at all"},
+    {"x": "2","y": "1","label":"" },
+    {"x": "3","y": "2","label":"Somewhat"},
+    {"x": "4","y": "3","label":""},
+    {"x": "5","y": "4","label":"Totally"}
+  ];
+
+
+  //Width and height
+  var w = 170;
+  var h = 100;
+  var x_pos=320;
+  var y_pos=-25;
+  var padding=50;
+  var barPadding = 1;
+
+  var legendX = d3.scale.ordinal()
+      .rangeBands([0, w]);
+
+  var legendXAxis = d3.svg.axis().scale(legendX)
+      .orient("bottom").ticks(2);
+
+
+  function draw_legend(data)
+  {
+    // Defining X axis in the function so it can pull from data
+    legendX.domain(data.map(function(d) { return d.x; }));
+    // Add Axis
+    fb_svg.append("g")
+      .attr("class", "axis")
+      .attr("transform", "translate("+x_pos+","+(y_pos+h)+")")
+      .call(legendXAxis);
+
+    // Create Bars
+    fb_svg.selectAll("rect")
+       .data(data)
+       .enter()
+       .append("rect")
+       .attr("x", function(d, i) {
+          return x_pos+(i * (w / data.length))-17;
+          })
+       .attr("y", y_pos+50)
+       .attr("width", w / data.length - barPadding)
+       .attr("height", 50)
+       .style("fill", function (d) { return fb_color(d.y) })
+      ;
+
+    // Add Data Labels
+    fb_svg.selectAll(".label")
+      .data(data)
+      .enter()
+      .append("text")
+      .text(function (d) {return d.label;})
+      .attr("class", "label")
+      .attr("x", function(d, i) {
+         return x_pos+(i * (w / data.length) + (w / data.length - barPadding) / 2);
+         })
+      .attr("y", y_pos+45)
+      .attr("text-anchor","middle")
+    ;
+
+  // end Draw function
+  };
+
+draw_legend(legendData);
+
 d3.json("data/feedback_map_v2.geojson", function(shape) {
 fb_g.append("g")
   .attr("id", "districts")
@@ -157,8 +227,6 @@ fb_g.append("g")
   .enter().append("path")
     .attr("id",
       function(d) {
-        // d['properties']['id']=d['properties']['NAME_3'];
-        // d['properties']['level']='district';
         return d['properties']['District'];
       })
     .attr("class", "district")
